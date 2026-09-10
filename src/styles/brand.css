@@ -1,16 +1,28 @@
-/* codrlabs brand layer for Starlight.
+/* codrlabs brand layer.
  *
- * Palette and typography are taken from codrlabs.com so this site reads as the
- * same product family. The three accent colours are the same three nodes in the
- * logo mark: magenta, teal, orange.
+ * The visual system comes from starlight-theme-rapide, which derives every
+ * colour from two OKLCH hue variables. So branding this site is a matter of
+ * pointing those hues at the codrlabs palette rather than hand-writing a token
+ * set — which also means rapide's light *and* dark branches stay correct.
  *
- *   magenta  #ac0c90   primary accent, links, active nav
- *   teal     #00bfaf   secondary, "active project" signal
- *   orange   #e37343   tertiary, connective lines in the mark
- *   amber    #f6bd51   highlight
+ * Hues measured from the real brand colours (codrlabs.com stylesheet):
+ *   #ac0c90 magenta -> oklch L 50.9% C 0.218 H 337.8
+ *   #15151f dark    -> oklch L 20.1% C 0.020 H 284.5
+ *
+ * This file is intentionally unlayered: rapide's styles live in `@layer rapide`,
+ * and unlayered declarations win over layered ones regardless of source order.
  */
 
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
+
+:root,
+::backdrop {
+	/* Neutrals track the codrlabs darks (cool, slightly violet) rather than
+	 * rapide's default warm 17. */
+	--sl-hue-base: 284.5;
+	/* Accent is codrlabs magenta. */
+	--sl-hue-accent: 337.8;
+}
 
 :root {
 	--codr-magenta: #ac0c90;
@@ -20,11 +32,6 @@
 
 	--sl-font: 'DM Sans', ui-sans-serif, system-ui, -apple-system, 'Segoe UI',
 		sans-serif;
-	--sl-font-system: var(--sl-font);
-}
-
-/* Headings and the site title carry the display face. */
-:root {
 	--codr-display: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
 }
 
@@ -37,59 +44,39 @@ h4 {
 	letter-spacing: -0.015em;
 }
 
-/* Dark theme — the default. */
-:root {
-	--sl-color-accent-low: #3d0233;
-	--sl-color-accent: #c22ea3;
-	--sl-color-accent-high: #f0b3e4;
-
-	--sl-color-white: #ffffff;
-	--sl-color-gray-1: #e8e8f0;
-	--sl-color-gray-2: #c2c2d4;
-	--sl-color-gray-3: #8888a0;
-	--sl-color-gray-4: #55556a;
-	--sl-color-gray-5: #3a3a50;
-	--sl-color-gray-6: #2a2a3a;
-	--sl-color-gray-7: #1c1c2a;
-	--sl-color-black: #0e0e16;
+/* Starlight sets `.site-title { color: var(--sl-color-text-accent) }`, which
+ * tints the wordmark. A wordmark should read as text, not as a link. */
+.site-title {
+	color: var(--sl-color-white);
 }
 
-/* Light theme. */
-:root[data-theme='light'] {
-	--sl-color-accent-low: #f7dcf1;
-	--sl-color-accent: #ac0c90;
-	--sl-color-accent-high: #5c0a4d;
-
-	--sl-color-white: #15151f;
-	--sl-color-gray-1: #14142b;
-	--sl-color-gray-2: #2a2a3a;
-	--sl-color-gray-3: #55556a;
-	--sl-color-gray-4: #8888a0;
-	--sl-color-gray-5: #c8c8d8;
-	--sl-color-gray-6: #e8e8f0;
-	--sl-color-gray-7: #f2f2f7;
-	--sl-color-black: #ffffff;
-}
-
-/* Splash hero: brand gradient wash behind the mark. */
-.hero > img,
-.hero .hero-html {
-	filter: drop-shadow(0 0 3rem rgba(172, 12, 144, 0.25));
-}
-
+/* Splash hero title.
+ *
+ * The gradient stops at magenta on purpose. Running it on to teal made sRGB
+ * interpolate through blue, and there is no blue in the codrlabs palette. */
 .hero h1 {
-	background: linear-gradient(
-		100deg,
-		var(--codr-orange),
-		var(--codr-magenta) 55%,
-		var(--codr-teal)
-	);
+	background: linear-gradient(100deg, var(--codr-orange), var(--codr-magenta));
 	-webkit-background-clip: text;
 	background-clip: text;
 	color: transparent;
 }
 
-/* Status pills used on the projects pages. */
+/* Rapide styles the primary hero button from its green family
+ * (--sl-color-green-*), not from the accent, so a magenta accent still gave a
+ * green call to action. Repoint it at the accent. Semantic green is left alone
+ * so "success" badges and tip asides keep meaning green. */
+.sl-link-button.primary {
+	background-color: var(--sl-color-accent-low);
+	border-color: var(--sl-color-accent);
+	color: var(--sl-color-accent-high);
+}
+
+.sl-link-button.primary:is(:hover, :focus-visible) {
+	border-color: var(--sl-color-accent-high);
+	color: var(--sl-color-white);
+}
+
+/* Status pills used in the projects tables and project pages. */
 .codr-status {
 	display: inline-block;
 	padding: 0.1rem 0.6rem;
@@ -103,30 +90,11 @@ h4 {
 }
 
 .codr-status--active {
-	color: #003d38;
+	color: #00302c;
 	background: var(--codr-teal);
 }
 
 .codr-status--archived {
 	color: var(--sl-color-gray-1);
 	background: var(--sl-color-gray-5);
-}
-
-:root[data-theme='light'] .codr-status--archived {
-	color: var(--sl-color-gray-2);
-	background: var(--sl-color-gray-6);
-}
-
-/* Card grid on the splash page: give each card a hairline that picks up the
- * brand rather than the default flat gray. */
-.card {
-	border-color: var(--sl-color-gray-5);
-}
-
-.card .icon {
-	color: var(--codr-magenta);
-}
-
-:root:not([data-theme='light']) .card .icon {
-	color: var(--sl-color-accent-high);
 }

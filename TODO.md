@@ -22,13 +22,11 @@ projects. Built with Astro + Starlight. First project documented: **Vizably**.
       `list`; github.com REST has no create-org endpoint (GHES only). Must be
       done at https://github.com/organizations/plan.
 - [x] **Decided: one org, `codrlabs`** (2026-09-09) `[verified]`. A separate
-      `codrlabs-open` org was considered and rejected: `gh api orgs/codrlabs`
-      shows the org is already named "Codrlabs Open" with `open@codrlabs.com`,
-      and its 3 public repos (`vizably`, `corspat`, `tympy`) are all open —
-      client work is not on GitHub at all.
-      Nothing to wall mentees off from, so the split bought only duplicate
-      settings and a repo transfer. `[falsified]` — the earlier claim that a
-      second org was needed for access boundaries rested on a false premise.
+      `codrlabs-open` org was considered and rejected: the org is already named
+      "Codrlabs Open" with `open@codrlabs.com`, and every repo in it is open
+      source, so a second org bought only duplicate settings and a transfer.
+      `[falsified]` — the earlier claim that a second org was needed for access
+      boundaries rested on a false premise.
 - [x] Build passes `[verified]` — `npm run build` → 5 pages in 22.02s. Two
       benign warnings: empty `i18n` collection, no custom 404 entry.
 - [x] Repo created private + pushed `[verified]` — `gh repo view codrlabs/open`
@@ -95,6 +93,24 @@ projects. Built with Astro + Starlight. First project documented: **Vizably**.
 - [ ] **Next active project.** Only Vizably is live; `corspat` and `tympy` are
       archived on GitHub and documented as such. A new project gets its own
       top-level sidebar section when it has something worth documenting.
+
+## Ground rules
+
+**This repo is going public.** Treat every commit as already published — git
+history is not a private scratchpad, and scrubbing it after the fact means a
+force-push that breaks every clone and fork.
+
+Nothing proprietary crosses into this repo, ever:
+
+- No internal hostnames, IPs, server names, or infrastructure detail.
+- No client names, client work, or anything under NDA.
+- No private ops/runbook content, in files *or* commit messages.
+- No names of contributors, mentees, or their schools without written consent —
+  see the platform page work below.
+
+Already caught once: an internal Git hostname reached `TODO.md` and had to be
+removed from three commits with `git filter-branch` before the repo went
+public. `[verified]` — `git grep` across all revisions now returns 0 matches.
 
 ## Notes
 

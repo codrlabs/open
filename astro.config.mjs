@@ -1,6 +1,7 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
+import starlightThemeRapide from 'starlight-theme-rapide';
 
 // https://astro.build/config
 export default defineConfig({
@@ -10,8 +11,12 @@ export default defineConfig({
 			title: 'codrlabs',
 			description:
 				'The open side of codrlabs — software built in the open, and the people we mentor through building it.',
+			plugins: [starlightThemeRapide()],
 			logo: {
-				src: './src/assets/codrlabs-open.png',
+				// Trimmed mark. The original org avatar carried ~28% transparent
+				// padding, which shrank the mark in the header and read as an
+				// oversized gap before the wordmark.
+				src: './src/assets/codrlabs-mark.png',
 				alt: 'codrlabs',
 			},
 			favicon: '/favicon.png',
@@ -21,6 +26,11 @@ export default defineConfig({
 					icon: 'github',
 					label: 'GitHub',
 					href: 'https://github.com/codrlabs',
+				},
+				{
+					icon: 'discord',
+					label: 'Discord',
+					href: 'https://discord.com/invite/4KajkBHaQ',
 				},
 				{
 					icon: 'linkedin',
