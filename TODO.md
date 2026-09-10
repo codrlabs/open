@@ -218,8 +218,20 @@ is no gap.
       (latest v7.0.1 / v6.1.2 / v5.0.1). Checkout uses `fetch-depth: 0` so
       `lastUpdated` dates come from real history. `paths-ignore` skips
       redeploys for commits touching only `TODO.md`, `README.md` or `LICENSE`.
-- [ ] First workflow run green, and the site verified on GitHub's Pages IPs
-      *before* any DNS change.
+- [x] First workflow run green, and the site verified on GitHub's Pages IPs
+      *before* any DNS change. `[verified]` 2026-09-10: run `34459450874` →
+      `build` and `deploy` both `success`. With `--resolve` to `185.199.108.153`:
+      `/`, `/practices/`, `/start/platform/` → 200; title and hero read
+      "codrlabs open"; `Server: GitHub.com`; a built `/_astro/*.css` → 200, so no
+      base-path breakage; `codrlabs.github.io/open/` → 301 to the custom domain.
+      No CAA records on `codrlabs.com` or `open.codrlabs.com` (Cloudflare DoH),
+      so Let's Encrypt can issue. GitHub health check pre-switch: valid,
+      proxied, not yet pointed at GitHub, `caa_error: null`.
+      `[falsified]` — the section intro's "there is no gap": content stays up,
+      but `https://` shows a certificate warning between the DNS switch and
+      GitHub's Let's Encrypt issuance (minutes, up to about an hour). Avoiding
+      it would need zone-wide SSL changes to `codrlabs.com`, which the
+      minimal-footprint rule rules out.
 - [ ] **You:** change the `open` record to `CNAME codrlabs.github.io`,
       **DNS-only (grey cloud)**, so GitHub can issue its certificate.
 - [ ] Certificate issued → set `https_enforced: true`.
