@@ -1,8 +1,8 @@
 # codrlabs open — task list
 
-Site: **open.codrlabs.com** (custom domain pending one DNS record — checklist
-item 2; live meanwhile at https://codrlabs-open.pages.dev) · Repo:
-**codrlabs/open** (public since 2026-09-10)
+Site: **https://open.codrlabs.com** — GitHub Pages, deployed by GitHub Actions on
+push to `main`, HTTPS enforced (since 2026-09-10) · Repo: **codrlabs/open**
+(public since 2026-09-10)
 Local: `open-solutions/open in the codrlabs workspace`
 
 Docs hub for the codrlabs open-solutions work — unpaid, mentoring-driven
@@ -253,7 +253,18 @@ is no gap.
       `is_cname_to_github_user_domain: true`, `is_https_eligible: true`.
       Earlier the same day it was half done — target changed, proxy still on;
       GitHub then reported `is_proxied: true`, `is_https_eligible: false`.
-- [ ] Certificate issued → set `https_enforced: true`.
+- [x] Certificate issued → set `https_enforced: true`. **Done** (2026-09-10)
+      `[verified]`. GitHub did not start issuing on its own: the certificate
+      stayed `none` from the DNS switch at 03:49 until 04:02, and in that window
+      `https://` served GitHub's `*.github.io` certificate — the broken SSL you
+      saw. Removing and re-adding the custom domain on the repo triggered it:
+      `authorized` → `approved` within ~30 s, and the watcher set
+      `https_enforced: true` at 04:02:45. Checked independently afterwards:
+      HTTPS with strict verification → 200 (`ssl_verify=0`), `http://` → 301 to
+      `https://`, certificate `CN=open.codrlabs.com`, Let's Encrypt `YR1`, valid
+      2026-09-10 → 2026-12-09 (GitHub renews it).
+      Lesson: if a GitHub Pages certificate sits at `none` once DNS is correct
+      and DNS-only, re-save the custom domain instead of waiting.
 - [x] Remove the custom domain from the Cloudflare Pages project, then delete
       the `codrlabs-open` Cloudflare project. **Done by you** (2026-09-10).
       `[verified]` `wrangler pages project list` no longer lists
@@ -332,8 +343,10 @@ not to be actioned from this repo**:
       `customCss`; the Google Fonts `@import` disclosed every visitor's IP to a
       third party, which contradicted the platform page's privacy section.
       Built output now contains 0 third-party URLs and 5 local `.woff2` files.
-- [ ] **Connect Cloudflare Pages to GitHub for deploy-on-push** (optional) —
-      deploys are currently direct uploads via `wrangler pages deploy`.
+- [x] **Superseded 2026-09-10 — deploy-on-push now comes from GitHub Actions**
+      (`.github/workflows/deploy.yml`); Cloudflare Pages is no longer used.
+      Original entry: Connect Cloudflare Pages to GitHub for deploy-on-push
+      (optional) — deploys are currently direct uploads via `wrangler pages deploy`.
       `[unverified]` Cloudflare does not convert a Direct Upload project to Git
       integration in place; it would mean a new Git-connected project and moving
       the custom domain onto it. Not tested.
@@ -394,7 +407,13 @@ public. `[verified]` — `git grep` across all revisions now returns 0 matches.
 ## Notes
 
 - Dev server: `npm run dev` → http://localhost:4321
-- Build check: `npm run build` (runs `astro check` + `astro build`)
+- Build check: `npm run build` — runs `astro build` only. `[falsified]` — this
+  line used to say it also runs `astro check`; `package.json` has
+  `"build": "astro build"`.
+- Deploy: push to `main`. GitHub Actions (`.github/workflows/deploy.yml`) builds
+  and publishes to GitHub Pages; commits touching only `TODO.md`, `README.md` or
+  `LICENSE` skip it. Manual run: Actions → Deploy to GitHub Pages → Run
+  workflow.
 - **Restart the dev server after adding a content file or editing
   `astro.config.mjs`.** Seen 2026-09-09: a dev server started at 18:12 kept
   reporting `The slug "start/mentoring" specified in the Starlight sidebar

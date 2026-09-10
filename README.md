@@ -10,9 +10,16 @@ Built with [Astro](https://astro.build) + [Starlight](https://starlight.astro.bu
 ```sh
 npm install
 npm run dev      # http://localhost:4321
-npm run build    # type-check + static build into dist/
+npm run build    # static build into dist/ (astro build)
 npm run preview  # serve the built site locally
 ```
+
+## Deploy
+
+Push to `main`. GitHub Actions builds the site and publishes it to GitHub Pages
+at [open.codrlabs.com](https://open.codrlabs.com) — there is no manual deploy
+step. Commits that only touch `TODO.md`, `README.md` or `LICENSE` skip the
+deploy.
 
 ## Layout
 
