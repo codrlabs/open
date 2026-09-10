@@ -25,6 +25,13 @@ to a customer, and no project here has a delivery date set by one. The
 repositories live under
 [github.com/codrlabs](https://github.com/codrlabs).
 
+**These projects have no real user base.** codrlabs' own products do — real
+users, real constraints, real reviews — and mentoring here deliberately
+simulates those conditions, so contributors can practise against them without
+anyone depending on the result. The code, the tooling and the review of your
+pull requests are genuine; the users, constraints and reviews around them are
+modelled on codrlabs' production work.
+
 ## How people take part
 
 There are three distinct ways, and they carry different expectations.
@@ -56,6 +63,9 @@ Stated plainly, because ambiguity here is how people get hurt:
 - **It is not employment.** No wage, no salary, no stipend, no contractor
   agreement. Contributors are not codrlabs employees, workers, or contractors,
   and this is not a paid internship.
+- **It is not production work.** Nothing built here ships to the users of
+  codrlabs' products. The users and conditions contributors work against are
+  simulated.
 - **It is not a job offer or a pathway to one.** Nobody is being evaluated for a
   role, and taking part creates no expectation of future work.
 - **It is not exchange of labour for a service.** Nobody pays codrlabs for

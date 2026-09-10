@@ -5,9 +5,11 @@ sidebar:
   order: 2
 ---
 
-The projects on this site are the teaching material. There is no separate
-curriculum, no exercise repo, and no toy problem set — you contribute to
-software that other people actually use, and the review you get is the lesson.
+The projects on this site are the teaching material. They have no real user
+base. codrlabs' own products do — real users, real constraints, real reviews —
+and mentoring here simulates those conditions on purpose, so you practise
+against them without anyone depending on the result. The review of your pull
+requests is not simulated: it is the lesson.
 
 ## What you get
 
@@ -16,8 +18,10 @@ software that other people actually use, and the review you get is the lesson.
 - **The reasoning, not just the verdict.** When a change is rejected, the
   tradeoff that killed it gets written down — usually in the repository's own
   docs, so the next person finds it.
-- **Real constraints.** Accessibility rules, browser behaviour, hosting budgets,
-  someone else's API rate limit. The things that make software actually hard.
+- **Constraints — some genuine, some simulated.** The technical ones are
+  genuine: accessibility rules, browser behaviour, third-party API limits. The
+  product ones — users, their expectations, the reviews they leave — are
+  simulated, modelled on codrlabs' own apps.
 
 ## What is expected of you
 

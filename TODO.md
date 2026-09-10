@@ -196,6 +196,19 @@ Status as of 2026-09-10.
       deployment, `3a434b87`. All seven hashed URLs return 404, cache-busted and
       plain. Four of them kept serving 200 for a few minutes after deletion; no
       cache headers were present, so the cause is `[unverified]`.
+- [x] **Copy corrected: codrlabs open has no real users** (2026-09-10). Your
+      correction: codrlabs' own products have real users, constraints and
+      reviews; codrlabs open *simulates* those conditions to mentor.
+      `[falsified]` — five claims of mine said otherwise: the homepage "Mentor
+      by building" card ("real users… a live codebase") and "Solve a real
+      problem" card ("nothing is built purely as a teaching exercise"),
+      `start/mentoring.md` ("software that other people actually use", and
+      "hosting budgets" as a real constraint), and `start/what-this-is.md`
+      ("real code review on real software"). All rewritten. `start/platform.md`
+      now says outright that the projects have no real user base, and lists
+      "not production work" under what mentoring is not.
+      Assumption, not confirmed: "reviews" means user/app-store reviews, which
+      are simulated; code review of pull requests stays genuine.
 
 ## Open
 
@@ -232,11 +245,23 @@ is no gap.
       GitHub's Let's Encrypt issuance (minutes, up to about an hour). Avoiding
       it would need zone-wide SSL changes to `codrlabs.com`, which the
       minimal-footprint rule rules out.
-- [ ] **You:** change the `open` record to `CNAME codrlabs.github.io`,
+- [x] **You:** change the `open` record to `CNAME codrlabs.github.io`,
       **DNS-only (grey cloud)**, so GitHub can issue its certificate.
+      **Done** (2026-09-10) `[verified]`: Cloudflare DoH returns
+      `CNAME codrlabs.github.io.` → `185.199.108–111.153`; the watcher saw the
+      switch at 03:49:15. GitHub health: `is_proxied: false`,
+      `is_cname_to_github_user_domain: true`, `is_https_eligible: true`.
+      Earlier the same day it was half done — target changed, proxy still on;
+      GitHub then reported `is_proxied: true`, `is_https_eligible: false`.
 - [ ] Certificate issued → set `https_enforced: true`.
-- [ ] Remove the custom domain from the Cloudflare Pages project, then delete
-      the `codrlabs-open` Cloudflare project.
+- [x] Remove the custom domain from the Cloudflare Pages project, then delete
+      the `codrlabs-open` Cloudflare project. **Done by you** (2026-09-10).
+      `[verified]` `wrangler pages project list` no longer lists
+      `codrlabs-open`, and the account's other projects are
+      still listed with their domains, untouched. A first check through the raw
+      OAuth token was inconclusive — `Authentication error`, most likely an
+      expired token — and my script had mislabelled that result as "gone";
+      wrangler refreshes its own token, so its listing is the evidence.
 - [ ] Recommended, **you:** verify **`open.codrlabs.com` only** for GitHub Pages
       (one TXT record — GitHub shows the exact name and value when you add the
       domain). Deliberately *not* the apex `codrlabs.com`: verifying the company
