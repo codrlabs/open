@@ -121,7 +121,9 @@ Status as of 2026-09-10.
        admits this gap in a visible callout — remove that callout once closed.
 
 - [x] **Renamed to "codrlabs open"** (2026-09-10) `[verified]` — navbar title in
-      `astro.config.mjs`; screenshot confirms.
+      `astro.config.mjs`; screenshot confirms. `[falsified]` as a claim that the
+      rename was complete: the homepage hero and browser-tab title still said
+      "codrlabs". Finished later the same day — see "Rename finished" below.
 - [x] **Practices section written from vizably's docs** (2026-09-10) `[verified]` —
       18 pages build. Distilled from `docs/guides/{thinking-in-architecture,
       architecture-mental-model,workflow,reviewing}.md` and `docs/README.md`:
@@ -158,6 +160,24 @@ Status as of 2026-09-10.
       `[falsified]` — the earlier claim that attaching the domain "cannot be done
       from here" was wrong for this step. It *was* right that Cloudflare would
       not create the DNS record: validation reported `CNAME record not set`.
+- [x] **Rename finished** (2026-09-10) `[verified]` — homepage `title` and the
+      `head` title override in `src/content/docs/index.mdx` now read
+      "codrlabs open". Live check on `codrlabs-open.pages.dev`: `<title>`,
+      header span and hero `<h1>` all read "codrlabs open".
+- [x] **Logo alt emptied** `[verified]` — `alt: ''` in `astro.config.mjs`. The
+      visible title shares the link, so `alt="codrlabs"` made screen readers
+      announce "codrlabs codrlabs open". Astro renders it as a bare `alt`
+      attribute, which HTML treats as `alt=""`; a check grepping for the literal
+      string `alt=""` falsely failed on this and blocked the deploy until the
+      markup was read directly.
+- [x] **Old Cloudflare test deployments deleted** (2026-09-10) `[verified]` —
+      your call. Seven superseded deployments deleted via the Pages API:
+      `133ab549`, `474d6683`, `b7f76404`, `a50e7a84`, `69a9f5d3`, `2521d007`,
+      then `15c62329` once `3a434b87` was canonical, behind a guard that refused
+      to delete the live deployment. The project now holds exactly one
+      deployment, `3a434b87`. All seven hashed URLs return 404, cache-busted and
+      plain. Four of them kept serving 200 for a few minutes after deletion; no
+      cache headers were present, so the cause is `[unverified]`.
 
 ## Open
 
