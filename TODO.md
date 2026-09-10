@@ -21,6 +21,21 @@ projects. Built with Astro + Starlight. First project documented: **Vizably**.
 - [x] Org creation is not scriptable `[verified]` — `gh org --help` lists only
       `list`; github.com REST has no create-org endpoint (GHES only). Must be
       done at https://github.com/organizations/plan.
+- [x] **Decided: one org, `codrlabs`** (2026-09-09) `[verified]`. A separate
+      `codrlabs-open` org was considered and rejected: `gh api orgs/codrlabs`
+      shows the org is already named "Codrlabs Open" with `open@codrlabs.com`,
+      and its 3 public repos (`vizably`, `corspat`, `tympy`) are all open —
+      client work is not on GitHub at all.
+      Nothing to wall mentees off from, so the split bought only duplicate
+      settings and a repo transfer. `[falsified]` — the earlier claim that a
+      second org was needed for access boundaries rested on a false premise.
+- [x] Build passes `[verified]` — `npm run build` → 5 pages in 22.02s. Two
+      benign warnings: empty `i18n` collection, no custom 404 entry.
+- [x] Repo created private + pushed `[verified]` — `gh repo view codrlabs/open`
+      → `codrlabs/open | PRIVATE | https://github.com/codrlabs/open`, commit
+      `da0cffb` on `main`.
+- [x] README rewritten for this project `[verified]` — replaced the Starlight
+      starter-kit README.
 
 ## Open
 
