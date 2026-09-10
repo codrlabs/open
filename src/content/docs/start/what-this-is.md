@@ -1,11 +1,11 @@
 ---
 title: What this is
-description: The scope and purpose of the open side of codrlabs.
+description: The scope and purpose of the open side of Codrlabs.
 sidebar:
   order: 1
 ---
 
-**open.codrlabs.com** is the home for the software codrlabs builds in the open,
+**open.codrlabs.com** is the home for the software Codrlabs builds in the open,
 and for the people we mentor through building it.
 
 It is deliberately separate from client work. Nothing here is billed to anyone,
@@ -15,7 +15,7 @@ two reasons:
 1. **They should exist.** Each one solves a problem the maintainers actually
    hit, and there was no good open alternative.
 2. **They are somewhere to learn properly.** There are no real users here —
-   codrlabs' own products have those. Mentoring simulates the conditions those
+   Codrlabs' own products have those. Mentoring simulates the conditions those
    products face, while the code review itself is genuine — see
    [Mentoring](/start/mentoring/).
 
@@ -36,5 +36,5 @@ repositories.
 
 ## Who is behind it
 
-codrlabs, based in Canada — [codrlabs.com](https://codrlabs.com). Reach the open
+Codrlabs, based in Canada — [codrlabs.com](https://codrlabs.com). Reach the open
 side at [open@codrlabs.com](mailto:open@codrlabs.com).

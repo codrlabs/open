@@ -1,6 +1,6 @@
 ---
 title: All projects
-description: Every repository in the codrlabs GitHub organisation, active and archived.
+description: Every repository in the Codrlabs GitHub organisation, active and archived.
 sidebar:
   order: 1
 ---

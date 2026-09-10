@@ -1,8 +1,8 @@
-/* codrlabs brand layer.
+/* Codrlabs brand layer.
  *
  * The visual system comes from starlight-theme-rapide, which derives every
  * colour from two OKLCH hue variables. So branding this site is a matter of
- * pointing those hues at the codrlabs palette rather than hand-writing a token
+ * pointing those hues at the Codrlabs palette rather than hand-writing a token
  * set — which also means rapide's light *and* dark branches stay correct.
  *
  * Hues measured from the real brand colours (codrlabs.com stylesheet):
@@ -20,10 +20,10 @@
 
 :root,
 ::backdrop {
-	/* Neutrals track the codrlabs darks (cool, slightly violet) rather than
+	/* Neutrals track the Codrlabs darks (cool, slightly violet) rather than
 	 * rapide's default warm 17. */
 	--sl-hue-base: 284.5;
-	/* Accent is codrlabs magenta. */
+	/* Accent is Codrlabs magenta. */
 	--sl-hue-accent: 337.8;
 }
 
@@ -56,7 +56,7 @@ h4 {
 /* Splash hero title.
  *
  * The gradient stops at magenta on purpose. Running it on to teal made sRGB
- * interpolate through blue, and there is no blue in the codrlabs palette. */
+ * interpolate through blue, and there is no blue in the Codrlabs palette. */
 .hero h1 {
 	background: linear-gradient(100deg, var(--codr-orange), var(--codr-magenta));
 	-webkit-background-clip: text;

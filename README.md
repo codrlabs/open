@@ -1,6 +1,6 @@
-# codrlabs open
+# Codrlabs Open
 
-Documentation site for the open-source projects codrlabs builds and mentors in
+Documentation site for the open-source projects Codrlabs builds and mentors in
 the open. Ships to **[open.codrlabs.com](https://open.codrlabs.com)**.
 
 Built with [Astro](https://astro.build) + [Starlight](https://starlight.astro.build).

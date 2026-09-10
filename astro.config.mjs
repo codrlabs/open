@@ -8,9 +8,9 @@ export default defineConfig({
 	site: 'https://open.codrlabs.com',
 	integrations: [
 		starlight({
-			title: 'codrlabs open',
+			title: 'Codrlabs Open',
 			description:
-				'The open side of codrlabs — software built in the open, and the people we mentor through building it.',
+				'The open side of Codrlabs — software built in the open, and the people we mentor through building it.',
 			plugins: [starlightThemeRapide()],
 			logo: {
 				// Trimmed mark. The original org avatar carried ~28% transparent

@@ -5,7 +5,7 @@ sidebar:
   order: 5
 ---
 
-Everything here has been hit for real on a codrlabs project. The pitfalls listed
+Everything here has been hit for real on a Codrlabs project. The pitfalls listed
 are the ones that cost an afternoon, so they are written down rather than
 rediscovered.
 

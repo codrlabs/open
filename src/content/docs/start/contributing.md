@@ -1,6 +1,6 @@
 ---
 title: Contributing
-description: How to contribute to a codrlabs open project.
+description: How to contribute to a Codrlabs Open project.
 sidebar:
   order: 2
 ---

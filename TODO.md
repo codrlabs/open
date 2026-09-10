@@ -1,11 +1,11 @@
-# codrlabs open — task list
+# Codrlabs Open — task list
 
 Site: **https://open.codrlabs.com** — GitHub Pages, deployed by GitHub Actions on
 push to `main`, HTTPS enforced (since 2026-09-10) · Repo: **codrlabs/open**
 (public since 2026-09-10)
 Local: `open-solutions/open in the codrlabs workspace`
 
-Docs hub for the codrlabs open-solutions work — unpaid, mentoring-driven
+Docs hub for the Codrlabs open-solutions work — unpaid, mentoring-driven
 projects. Built with Astro + Starlight. First project documented: **Vizably**.
 
 ---
@@ -38,8 +38,8 @@ projects. Built with Astro + Starlight. First project documented: **Vizably**.
       starter-kit README.
 - [x] Re-added repo links in the Vizably docs `[verified]` —
       `src/content/docs/vizably/overview.md`.
-- [x] **Branded as codrlabs** (2026-09-09) `[verified]`. Site title is
-      `codrlabs`, not "codrlabs open". Logo is the org avatar
+- [x] **Branded as Codrlabs** (2026-09-09) `[verified]`. Site title is
+      `codrlabs`, not "Codrlabs Open". Logo is the org avatar
       (`gh api orgs/codrlabs --jq .avatar_url` → user `153514236`), saved to
       `src/assets/codrlabs-open.png` and `public/favicon.png`; Astro's default
       `favicon.svg` and Starlight's `houston.webp` deleted.
@@ -138,10 +138,10 @@ Status as of 2026-09-10.
        `[verified]` neither exists in any repo. The platform page currently
        admits this gap in a visible callout — remove that callout once closed.
 
-- [x] **Renamed to "codrlabs open"** (2026-09-10) `[verified]` — navbar title in
+- [x] **Renamed to "Codrlabs Open"** (2026-09-10) `[verified]` — navbar title in
       `astro.config.mjs`; screenshot confirms. `[falsified]` as a claim that the
       rename was complete: the homepage hero and browser-tab title still said
-      "codrlabs". Finished later the same day — see "Rename finished" below.
+      "Codrlabs". Finished later the same day — see "Rename finished" below.
 - [x] **Practices section written from vizably's docs** (2026-09-10) `[verified]` —
       18 pages build. Distilled from `docs/guides/{thinking-in-architecture,
       architecture-mental-model,workflow,reviewing}.md` and `docs/README.md`:
@@ -180,11 +180,11 @@ Status as of 2026-09-10.
       not create the DNS record: validation reported `CNAME record not set`.
 - [x] **Rename finished** (2026-09-10) `[verified]` — homepage `title` and the
       `head` title override in `src/content/docs/index.mdx` now read
-      "codrlabs open". Live check on `codrlabs-open.pages.dev`: `<title>`,
-      header span and hero `<h1>` all read "codrlabs open".
+      "Codrlabs Open". Live check on `codrlabs-open.pages.dev`: `<title>`,
+      header span and hero `<h1>` all read "Codrlabs Open".
 - [x] **Logo alt emptied** `[verified]` — `alt: ''` in `astro.config.mjs`. The
       visible title shares the link, so `alt="codrlabs"` made screen readers
-      announce "codrlabs codrlabs open". Astro renders it as a bare `alt`
+      announce "Codrlabs Codrlabs Open". Astro renders it as a bare `alt`
       attribute, which HTML treats as `alt=""`; a check grepping for the literal
       string `alt=""` falsely failed on this and blocked the deploy until the
       markup was read directly.
@@ -196,9 +196,9 @@ Status as of 2026-09-10.
       deployment, `3a434b87`. All seven hashed URLs return 404, cache-busted and
       plain. Four of them kept serving 200 for a few minutes after deletion; no
       cache headers were present, so the cause is `[unverified]`.
-- [x] **Copy corrected: codrlabs open has no real users** (2026-09-10). Your
-      correction: codrlabs' own products have real users, constraints and
-      reviews; codrlabs open *simulates* those conditions to mentor.
+- [x] **Copy corrected: Codrlabs Open has no real users** (2026-09-10). Your
+      correction: Codrlabs' own products have real users, constraints and
+      reviews; Codrlabs Open *simulates* those conditions to mentor.
       `[falsified]` — five claims of mine said otherwise: the homepage "Mentor
       by building" card ("real users… a live codebase") and "Solve a real
       problem" card ("nothing is built purely as a teaching exercise"),
@@ -209,6 +209,20 @@ Status as of 2026-09-10.
       "not production work" under what mentoring is not.
       Assumption, not confirmed: "reviews" means user/app-store reviews, which
       are simulated; code review of pull requests stays genuine.
+- [x] **History rewritten** (2026-09-10) `[verified]` — to remove content that
+      should not have been published, and local machine paths. What the content
+      was is deliberately not recorded here. All 17 commits rewritten with
+      `git filter-branch`; each removed phrase checked at 0 matches across every
+      rewritten commit before force-pushing with an explicit lease. The two
+      Actions artifacts built from the old commits were deleted. Existing
+      clones of the old history must be re-cloned.
+- [x] **Brand capitalised** (2026-09-10) `[verified]` — "Codrlabs" and
+      "Codrlabs Open" in prose across 13 files (66 replacements), per your
+      instruction. Lowercase kept only for identifiers: domains, emails,
+      `github.com/codrlabs…` links, the org login, repo slugs, file names and
+      code. Checked: 0 identifiers wrongly capitalised, 0 lowercase brand words
+      left in prose; build passes with title "Codrlabs Open". GitHub repo
+      description updated to match.
 
 ## Open
 
@@ -235,7 +249,7 @@ is no gap.
       *before* any DNS change. `[verified]` 2026-09-10: run `34459450874` →
       `build` and `deploy` both `success`. With `--resolve` to `185.199.108.153`:
       `/`, `/practices/`, `/start/platform/` → 200; title and hero read
-      "codrlabs open"; `Server: GitHub.com`; a built `/_astro/*.css` → 200, so no
+      "Codrlabs Open"; `Server: GitHub.com`; a built `/_astro/*.css` → 200, so no
       base-path breakage; `codrlabs.github.io/open/` → 301 to the custom domain.
       No CAA records on `codrlabs.com` or `open.codrlabs.com` (Cloudflare DoH),
       so Let's Encrypt can issue. GitHub health check pre-switch: valid,
@@ -282,7 +296,7 @@ is no gap.
       `[falsified]` — this bullet first recommended verifying the apex
       `codrlabs.com`, which is exactly the contamination you ruled out.
 
-**Keep codrlabs open's footprint in company resources minimal** (your
+**Keep Codrlabs Open's footprint in company resources minimal** (your
 instruction, 2026-09-10). After cutover, the whole footprint in the company's
 `codrlabs.com` zone should be the `open` CNAME plus the optional verification
 TXT — nothing at the apex, no org-wide GitHub settings changed, and the
@@ -333,7 +347,7 @@ not to be actioned from this repo**:
       public, but it permanently couples the site being up to the repo being
       public. Cloudflare Pages is live now and is indifferent to visibility.
 - [x] **Platform page written** `[verified]` — `src/content/docs/start/platform.md`,
-      linked from the homepage and the sidebar. Covers: what codrlabs open is,
+      linked from the homepage and the sidebar. Covers: what Codrlabs Open is,
       the three ways to take part (open contribution / mentored / school
       placement), an explicit "what mentoring is not" section (not employment,
       no wage, not a job pathway, no SLA), copyright and licensing, privacy, and
@@ -378,7 +392,7 @@ not to be actioned from this repo**:
       GitHub Pages (needs `public/CNAME` + `@astrojs/` static
       output + Actions workflow) vs Cloudflare Pages vs Vercel.
 - [ ] **DNS for `open.codrlabs.com`** — now tracked as finalize checklist item 2,
-      which has the exact record. Original entry: CNAME record at the codrlabs
+      which has the exact record. Original entry: CNAME record at the Codrlabs
       DNS provider pointing at the chosen host.
 - [x] **Flip the repo public** — done 2026-09-10 `[verified]`, see Done.
       Original entry: Decide when to flip the repo public. Currently private.
@@ -399,6 +413,10 @@ Nothing proprietary crosses into this repo, ever:
 - No private ops/runbook content, in files *or* commit messages.
 - No names of contributors, mentees, or their schools without written consent —
   see the platform page work below.
+- Nothing about any individual contributor's circumstances: not who they are,
+  not how many people are in a given situation, not any arrangement they are
+  under. Describe how things work in general, never how they stand today. In a
+  small project, a count is enough to identify someone.
 
 Already caught once: an internal Git hostname reached `TODO.md` and had to be
 removed from three commits with `git filter-branch` before the repo went

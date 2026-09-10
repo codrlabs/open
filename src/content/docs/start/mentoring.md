@@ -1,12 +1,12 @@
 ---
 title: Mentoring
-description: How mentoring works on codrlabs open projects, and what to expect from a review.
+description: How mentoring works on Codrlabs Open projects, and what to expect from a review.
 sidebar:
   order: 2
 ---
 
 The projects on this site are the teaching material. They have no real user
-base. codrlabs' own products do — real users, real constraints, real reviews —
+base. Codrlabs' own products do — real users, real constraints, real reviews —
 and mentoring here simulates those conditions on purpose, so you practise
 against them without anyone depending on the result. The review of your pull
 requests is not simulated: it is the lesson.
@@ -21,7 +21,7 @@ requests is not simulated: it is the lesson.
 - **Constraints — some genuine, some simulated.** The technical ones are
   genuine: accessibility rules, browser behaviour, third-party API limits. The
   product ones — users, their expectations, the reviews they leave — are
-  simulated, modelled on codrlabs' own apps.
+  simulated, modelled on Codrlabs' own apps.
 
 ## What is expected of you
 

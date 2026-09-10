@@ -1,12 +1,12 @@
 ---
 title: Engineering practices
-description: How codrlabs open projects are built, reviewed and documented — distilled from real work, not from a style guide.
+description: How Codrlabs Open projects are built, reviewed and documented — distilled from real work, not from a style guide.
 sidebar:
   order: 1
 ---
 
 These pages are the **single source of truth** for how work is done across
-codrlabs open projects. If a project's own docs disagree with this section,
+Codrlabs Open projects. If a project's own docs disagree with this section,
 this section is what we meant.
 
 None of it was written in the abstract. Every page here is distilled from
