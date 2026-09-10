@@ -20,7 +20,11 @@ export default defineConfig({
 				alt: 'codrlabs',
 			},
 			favicon: '/favicon.png',
-			customCss: ['./src/styles/brand.css'],
+			customCss: [
+				'@fontsource-variable/plus-jakarta-sans',
+				'@fontsource-variable/dm-sans',
+				'./src/styles/brand.css',
+			],
 			social: [
 				{
 					icon: 'github',
@@ -49,6 +53,7 @@ export default defineConfig({
 					items: [
 						{ label: 'What this is', slug: 'start/what-this-is' },
 						{ label: 'Mentoring', slug: 'start/mentoring' },
+						{ label: 'The platform', slug: 'start/platform' },
 						{ label: 'Contributing', slug: 'start/contributing' },
 					],
 				},

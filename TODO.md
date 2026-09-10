@@ -87,6 +87,38 @@ projects. Built with Astro + Starlight. First project documented: **Vizably**.
       `TODO.md` in 3 commits. `git filter-branch` + force-push with an explicit
       lease; `git grep` across all revisions now returns 0.
 
+## Finalize checklist — do these in order
+
+You asked to be reminded of this. Nothing below is done.
+
+1. [ ] **Add a `LICENSE` to `codrlabs/vizably`.** `[verified]` it has none
+       (`gh api repos/codrlabs/vizably --jq .license` → null), while `corspat`
+       and `tympy` are MIT. Without it the code is source-available, not open
+       source: contributors get no rights, and the status of *their*
+       contributions is unclear. This is the biggest legal gap and it gates the
+       "open source" claim the whole site makes.
+       Next: `gh api repos/codrlabs/vizably/contents/LICENSE` after adding, or
+       add it via the GitHub UI's licence template (MIT, to match the others).
+2. [ ] **Attach `open.codrlabs.com`** — Cloudflare dashboard → Workers & Pages →
+       `codrlabs-open` → Custom domains → Add. DNS already on Cloudflare, so the
+       CNAME and cert are automatic. Cannot be done from the CLI here: the
+       wrangler token has `zone (read)` only.
+3. [ ] **Make `codrlabs/open` public.**
+       Next: `gh repo edit codrlabs/open --visibility public --accept-visibility-change-consequences`
+       Before running it, confirm the ground rules above still hold — history is
+       currently clean (`git grep` across all revisions: 0 hits for the internal
+       hostname).
+4. [ ] **Enable `editLink`** in `astro.config.mjs` once public — edit links
+       would 404 for visitors while the repo is private.
+5. [ ] **Have a lawyer read `start/platform.md`.** It is written as a plain
+       description and says so, but it describes an unpaid mentoring
+       arrangement and how academic-credit placements work, for a company in Canada. Unpaid-work and
+       worker-classification rules are jurisdiction-specific and this has had
+       no legal review.
+6. [ ] **Add `CONTRIBUTING.md` and `CODE_OF_CONDUCT.md`** to the org.
+       `[verified]` neither exists in any repo. The platform page currently
+       admits this gap in a visible callout — remove that callout once closed.
+
 ## Open
 
 - [ ] **BLOCKING: attach `open.codrlabs.com`.** The domain does not resolve yet.
@@ -101,10 +133,17 @@ projects. Built with Astro + Starlight. First project documented: **Vizably**.
       Pages only serves *public* repos on Free. It would work once the repo is
       public, but it permanently couples the site being up to the repo being
       public. Cloudflare Pages is live now and is indifferent to visibility.
-- [ ] **Platform page (legal framing).** Explain what codrlabs open is, what the
-      mentoring relationship is and is not, and the terms contributors work
-      under.
-      Needs a real legal review; this is not it.
+- [x] **Platform page written** `[verified]` — `src/content/docs/start/platform.md`,
+      linked from the homepage and the sidebar. Covers: what codrlabs open is,
+      the three ways to take part (open contribution / mentored / school
+      placement), an explicit "what mentoring is not" section (not employment,
+      no wage, not a job pathway, no SLA), copyright and licensing, privacy, and
+      contact. Names no individual and no institution. Carries a visible "plain description, not a contract"
+      callout. Still needs item 5 in the checklist above.
+- [x] **Fonts self-hosted** `[verified]` — `@fontsource-variable/*` via
+      `customCss`; the Google Fonts `@import` disclosed every visitor's IP to a
+      third party, which contradicted the platform page's privacy section.
+      Built output now contains 0 third-party URLs and 5 local `.woff2` files.
 - [ ] **Connect Cloudflare Pages to GitHub for deploy-on-push** (optional) —
       deploys are currently direct uploads via `wrangler pages deploy`.
 - [ ] **Self-host the fonts.** `src/styles/brand.css` pulls Plus Jakarta Sans
