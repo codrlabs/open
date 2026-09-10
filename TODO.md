@@ -58,8 +58,55 @@ projects. Built with Astro + Starlight. First project documented: **Vizably**.
 - [x] Build after rebrand `[verified]` — `npm run build` → 9 pages in 2.31s,
       only the two benign warnings.
 
+- [x] **Adopted `starlight-theme-rapide`** (2026-09-09) `[verified]` — peer dep
+      `@astrojs/starlight >=0.42.0`, published 2026-09-02. It derives all colour
+      from `--sl-hue-base` / `--sl-hue-accent` in OKLCH and ships both light and
+      dark branches, so branding is two hue values, not a token set.
+      Brand hues measured from the real colours: `#15151f` → H 284.5 (base),
+      `#ac0c90` → H 337.8 (accent).
+- [x] **Light-theme bug fixed** `[verified]` — the old `brand.css` defined light
+      tokens only under `:root[data-theme='light']`, never under
+      `@media (prefers-color-scheme: light)`, which is the branch Starlight
+      actually uses (confirmed in the built CSS). An auto-theme visitor on a
+      light OS got dark tokens in a light layout. Rapide handles both.
+- [x] **Logo trimmed** `[verified]` — the org avatar was a 400×400 box holding a
+      286×286 mark, i.e. ~28% transparent padding. That shrank the header mark
+      and read as an oversized gap before the wordmark. Now
+      `src/assets/codrlabs-mark.png` at 308×308; favicon regenerated at 512×512.
+- [x] **Header/hero defects fixed** `[verified]` via screenshot comparison
+      against starlight.astro.build: wordmark was pink because Starlight defaults
+      `.site-title` to `var(--sl-color-text-accent)`; hero gradient ran
+      orange→teal and interpolated through blue, a colour not in the palette;
+      rapide hardcodes the primary hero button to its green family regardless of
+      accent. All three overridden in `src/styles/brand.css`.
+- [x] **Discord in the header** `[verified]` — `astro.config.mjs` social links.
+- [x] **Deployed to Cloudflare Pages** `[verified]` — project `codrlabs-open`,
+      live at https://codrlabs-open.pages.dev. `wrangler` is authenticated with
+      `pages (write)`.
+- [x] **Internal hostname scrubbed from history** `[verified]` — it had reached
+      `TODO.md` in 3 commits. `git filter-branch` + force-push with an explicit
+      lease; `git grep` across all revisions now returns 0.
+
 ## Open
 
+- [ ] **BLOCKING: attach `open.codrlabs.com`.** The domain does not resolve yet.
+      Cannot be done from here — the wrangler token has `zone (read)` only, and
+      adding a Pages custom domain needs DNS write.
+      Next (you): Cloudflare dashboard → Workers & Pages → `codrlabs-open` →
+      Custom domains → Add `open.codrlabs.com`. DNS is already on Cloudflare
+      (`memphis.ns` / `nia.ns`), so the CNAME and cert are automatic.
+- [ ] **Decide hosting for good: Cloudflare Pages vs GitHub Pages.**
+      `[verified]` GitHub Pages cannot serve this repo today — the `codrlabs`
+      org is on the **Free** plan (`gh api orgs/codrlabs --jq .plan.name`), and
+      Pages only serves *public* repos on Free. It would work once the repo is
+      public, but it permanently couples the site being up to the repo being
+      public. Cloudflare Pages is live now and is indifferent to visibility.
+- [ ] **Platform page (legal framing).** Explain what codrlabs open is, what the
+      mentoring relationship is and is not, and the terms contributors work
+      under.
+      Needs a real legal review; this is not it.
+- [ ] **Connect Cloudflare Pages to GitHub for deploy-on-push** (optional) —
+      deploys are currently direct uploads via `wrangler pages deploy`.
 - [ ] **Self-host the fonts.** `src/styles/brand.css` pulls Plus Jakarta Sans
       and DM Sans from Google Fonts over the network — a third-party request on
       every page load. `[unverified]` — not measured.
