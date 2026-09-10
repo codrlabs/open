@@ -135,25 +135,32 @@ You asked to be reminded of this. Nothing below is done.
 
 ## Open
 
-- [ ] **Vizably has local machine paths in its public docs.** `[verified]` 32
-      occurrences of `file:///c:/Users/<user>/...` across
-      `docs/guides/{getting-started,thinking-in-architecture}.md` and one other guide (2, 8, 22). Leaks the username and local
-      directory layout, and the links are dead for anyone else. None of it was
-      carried into this site.
-      Next: `cd ../vizably && grep -rn 'file:///c' docs/` then replace with
-      repo-relative links.
-- [ ] **Decide what happens to vizably's `docs/guides/`.** This site is now the
-      single source of truth for practices, but the originals still live in the
-      vizably repo — two copies that will drift. Options: delete the vizably
-      copies and link here, or leave them and accept drift.
-      Recommend: replace the generic guides (workflow, reviewing, thinking-in-
-      architecture) with a one-line pointer here; keep vizably-specific guides
-      (axe-core integration, url normalization, auth/storage) in the repo.
 - [ ] **Scan pipeline page.** `vizably/overview.md` admits it is missing.
-      Source: `docs/guides/axecore-integration.md` (293 lines) and
-      `docs/plans/axecore-integration-roadmap.md`.
+      Reading vizably's docs for source material is fine — see the scope rule
+      below; it is *editing* vizably that is out of bounds.
 - [ ] **ASCII diagrams could be SVG.** The layer diagrams render as code blocks;
       legible but busy. `[unverified]` — no accessibility check done on them.
+
+## Scope rule — do not edit the vizably repo from here
+
+**Decided 2026-09-10.** Work in this repo never modifies
+`open-solutions/vizably`. Vizably's own cleanup is a separate, later effort that
+happens on vizably, and part of that effort is moving its documentation into
+open.codrlabs.com. Reading vizably for source material is fine; writing to it is
+not.
+
+Two findings from reading it are therefore **logged here for that later effort,
+not to be actioned from this repo**:
+
+- 32 occurrences of `file:///c:/Users/<user>/...` in vizably's *public* docs —
+  `docs/guides/getting-started.md` (2),
+  one other guide (22),
+  `docs/guides/thinking-in-architecture.md` (8). `[verified]` These leak a
+  username and local directory layout, and the links are dead for anyone else.
+  None of it was carried into this site.
+- The generic guides now exist in both repos and will drift. The eventual shape:
+  vizably keeps its project-specific guides, the cross-project practices live
+  here, and vizably points at this site.
 
 - [ ] **BLOCKING: attach `open.codrlabs.com`.** The domain does not resolve yet.
       Cannot be done from here — the wrangler token has `zone (read)` only, and
