@@ -8,7 +8,7 @@ export default defineConfig({
 	site: 'https://open.codrlabs.com',
 	integrations: [
 		starlight({
-			title: 'codrlabs',
+			title: 'codrlabs open',
 			description:
 				'The open side of codrlabs — software built in the open, and the people we mentor through building it.',
 			plugins: [starlightThemeRapide()],
@@ -56,6 +56,10 @@ export default defineConfig({
 						{ label: 'The platform', slug: 'start/platform' },
 						{ label: 'Contributing', slug: 'start/contributing' },
 					],
+				},
+				{
+					label: 'Practices',
+					items: [{ autogenerate: { directory: 'practices' } }],
 				},
 				{
 					label: 'Projects',

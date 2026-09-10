@@ -46,8 +46,16 @@ API token; the user-owned store is the source of truth.
 That is what makes the product cheap enough to offer to everyone: no per-user
 hosting, no lock-in, and an account that is portable across devices.
 
-:::note[More to come]
-Setup, the scan pipeline, and the account-storage contract each need their own
-page here. For now the authoritative detail lives in the
+## Read next
+
+- [Architecture](/vizably/architecture/) — the layers, the folders, and the
+  contract between the two halves.
+- [Account storage](/vizably/account-storage/) — the portable account: on-disk
+  layout, the fit-check, and the concurrency rules.
+
+:::note[Still to write]
+The scan pipeline — Puppeteer, axe-core, and the transformer that turns rule
+violations into readable findings — does not have a page here yet. Until it
+does, the detail lives in the
 [Vizably repository](https://github.com/codrlabs/vizably).
 :::

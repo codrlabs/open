@@ -119,7 +119,41 @@ You asked to be reminded of this. Nothing below is done.
        `[verified]` neither exists in any repo. The platform page currently
        admits this gap in a visible callout — remove that callout once closed.
 
+- [x] **Renamed to "codrlabs open"** (2026-09-10) `[verified]` — navbar title in
+      `astro.config.mjs`; screenshot confirms.
+- [x] **Practices section written from vizably's docs** (2026-09-10) `[verified]` —
+      18 pages build. Distilled from `docs/guides/{thinking-in-architecture,
+      architecture-mental-model,workflow,reviewing}.md` and `docs/README.md`:
+      `practices/{index,layered-architecture,pull-requests,reviewing,
+      git-recovery,documentation}.md`. Generalised away from vizably specifics
+      so it applies org-wide.
+- [x] **Vizably docs written** `[verified]` — `vizably/architecture.md` (layers,
+      folder map, composition root, where-to-look-when-X-breaks) and
+      `vizably/account-storage.md` (portable account, fit-check, concurrency),
+      from `docs/plans/architecture-map.md` and
+      `docs/guides/auth_storage_guide/accountStorageContract.md`.
+
 ## Open
+
+- [ ] **Vizably has local machine paths in its public docs.** `[verified]` 32
+      occurrences of `file:///c:/Users/<user>/...` across
+      `docs/guides/{getting-started,thinking-in-architecture}.md` and one other guide (2, 8, 22). Leaks the username and local
+      directory layout, and the links are dead for anyone else. None of it was
+      carried into this site.
+      Next: `cd ../vizably && grep -rn 'file:///c' docs/` then replace with
+      repo-relative links.
+- [ ] **Decide what happens to vizably's `docs/guides/`.** This site is now the
+      single source of truth for practices, but the originals still live in the
+      vizably repo — two copies that will drift. Options: delete the vizably
+      copies and link here, or leave them and accept drift.
+      Recommend: replace the generic guides (workflow, reviewing, thinking-in-
+      architecture) with a one-line pointer here; keep vizably-specific guides
+      (axe-core integration, url normalization, auth/storage) in the repo.
+- [ ] **Scan pipeline page.** `vizably/overview.md` admits it is missing.
+      Source: `docs/guides/axecore-integration.md` (293 lines) and
+      `docs/plans/axecore-integration-roadmap.md`.
+- [ ] **ASCII diagrams could be SVG.** The layer diagrams render as code blocks;
+      legible but busy. `[unverified]` — no accessibility check done on them.
 
 - [ ] **BLOCKING: attach `open.codrlabs.com`.** The domain does not resolve yet.
       Cannot be done from here — the wrangler token has `zone (read)` only, and
