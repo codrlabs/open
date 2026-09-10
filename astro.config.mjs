@@ -17,7 +17,9 @@ export default defineConfig({
 				// padding, which shrank the mark in the header and read as an
 				// oversized gap before the wordmark.
 				src: './src/assets/codrlabs-mark.png',
-				alt: 'codrlabs',
+				// Empty on purpose: the visible site title sits in the same link,
+				// so a non-empty alt made screen readers announce the name twice.
+				alt: '',
 			},
 			favicon: '/favicon.png',
 			editLink: {
