@@ -68,6 +68,10 @@ export default defineConfig({
 					items: [{ autogenerate: { directory: 'practices' } }],
 				},
 				{
+					label: 'AI assistance',
+					items: [{ autogenerate: { directory: 'ai' } }],
+				},
+				{
 					label: 'Projects',
 					items: [
 						{ label: 'All projects', slug: 'projects/all' },

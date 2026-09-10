@@ -5,11 +5,10 @@ sidebar:
   order: 2
 ---
 
-The projects on this site are the teaching material. They have no real user
-base. Codrlabs' own products do — real users, real constraints, real reviews —
-and mentoring here simulates those conditions on purpose, so you practise
-against them without anyone depending on the result. The review of your pull
-requests is not simulated: it is the lesson.
+The projects on this site are the teaching material. Mentoring here is modelled
+on how Codrlabs builds its own products: what users expect, the constraints the
+products run under, and the standard of review they get. The review of your
+pull requests is the lesson.
 
 ## What you get
 
@@ -18,10 +17,10 @@ requests is not simulated: it is the lesson.
 - **The reasoning, not just the verdict.** When a change is rejected, the
   tradeoff that killed it gets written down — usually in the repository's own
   docs, so the next person finds it.
-- **Constraints — some genuine, some simulated.** The technical ones are
-  genuine: accessibility rules, browser behaviour, third-party API limits. The
-  product ones — users, their expectations, the reviews they leave — are
-  simulated, modelled on Codrlabs' own apps.
+- **Production constraints.** The technical ones come with the code:
+  accessibility rules, browser behaviour, third-party API limits. The product
+  ones — what users expect, how feedback arrives — are drawn from Codrlabs' own
+  apps.
 
 ## What is expected of you
 
@@ -31,6 +30,8 @@ requests is not simulated: it is the lesson.
   screenshot of an error.
 - **Take the review as information.** Changes get requested on almost every PR,
   including from maintainers. It is not a grade.
+- **Use AI to understand, not to skip the work.** Getting stuck is where the
+  learning happens. See [While you're learning](/ai/learning/).
 
 ## What this is not
 

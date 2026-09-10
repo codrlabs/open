@@ -17,6 +17,8 @@ general:
 2. Branch from `main`, one concern per branch.
 3. Open a pull request — every PR gets a real review, and reviews are meant to
    teach, not just gatekeep.
+4. If AI helped, say how in the pull request description — see
+   [AI assistance in contributions](/ai/contributing/).
 
 ## Where to start
 

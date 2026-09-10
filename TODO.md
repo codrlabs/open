@@ -196,7 +196,7 @@ Status as of 2026-09-10.
       deployment, `3a434b87`. All seven hashed URLs return 404, cache-busted and
       plain. Four of them kept serving 200 for a few minutes after deletion; no
       cache headers were present, so the cause is `[unverified]`.
-- [x] **Copy corrected: Codrlabs Open has no real users** (2026-09-10). Your
+- [x] **Copy corrected: claims about users and production conditions** (2026-09-10). Your
       correction: Codrlabs' own products have real users, constraints and
       reviews; Codrlabs Open *simulates* those conditions to mentor.
       `[falsified]` — five claims of mine said otherwise: the homepage "Mentor
@@ -252,6 +252,43 @@ Status as of 2026-09-10.
       URL space.
 
 ## Open
+
+- [x] **AI assistance section** (asked 2026-09-10). Guidance on using AI as a
+      developer, and specifically while learning or contributing voluntarily,
+      grounded in research rather than opinion. Starting point you gave: Lars
+      Faye, "AI coding will prevent expertise"
+      (https://larsfaye.com/articles/ai-coding-will-prevent-expertise).
+      **Written** `[verified]` — sidebar group "AI assistance" with four pages:
+      `ai/index` (principle, evidence table, limitations), `ai/learning`,
+      `ai/working`, `ai/contributing`. A homepage card, a mentoring bullet and a
+      contributing step link into it. Every figure was checked at its primary
+      source: Anthropic (Shen & Tamkin 2026; 52 developers; quiz 50% vs 67%),
+      Bastani et al., PNAS 2025 (~1,000 students; practice +48% / +127%, exam
+      −17% for unrestricted GPT-4), Prather et al., ICER 2024, METR 2025 (16
+      developers; 19% slower while believing they were 20% faster), Perry et al.,
+      CCS '23, Spracklen et al., USENIX Security 2025 (5.2% / 21.7%), Lee et al.,
+      CHI 2025 (319 workers), Stack Overflow 2025, DORA 2025, and GitClear 2025
+      (correlational, and stated as such). Secondhand figures that did not
+      survive checking were left out: Anthropic's "17% lower" is 17 percentage
+      points; a "47% drop in debugging" is not in the study; GitClear's "4x/8x"
+      clone figures are not what its report measures. Build: 22 pages, 597
+      internal links, 0 broken. Every external source link loads; PNAS blocks
+      automated requests, so Bastani is linked through its PubMed Central
+      open-access copy.
+      **Policy choices made on your behalf — confirm or change:** contributors
+      say how AI was used in the pull request description, and wholesale
+      agent-generated pull requests the author cannot walk through are sent back
+      (`ai/contributing`).
+- [x] **Stop framing Codrlabs Open by what it lacks** (asked 2026-09-10). Copy
+      saying "no real user base", "no real users here" or "not production work"
+      diminished it. Reframed around what is true and positive — real codebases,
+      mentoring against conditions drawn from Codrlabs' production work —
+      without claiming users it does not have. **Done** `[verified]`: homepage
+      cards "Mentor by building" and "Held to production standards" (was
+      "Simulate the real thing"), the mentoring intro and constraints bullet,
+      what-this-is point 2, and the fine-print paragraph and scope bullet (now
+      "not work on Codrlabs' commercial products"). Re-sweep of site copy for
+      "no real user", "not production", "user base", "simulat" → 0 matches.
 
 ### Migration to GitHub Pages (decided 2026-09-10, your call)
 

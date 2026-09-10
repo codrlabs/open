@@ -14,10 +14,9 @@ two reasons:
 
 1. **They should exist.** Each one solves a problem the maintainers actually
    hit, and there was no good open alternative.
-2. **They are somewhere to learn properly.** There are no real users here —
-   Codrlabs' own products have those. Mentoring simulates the conditions those
-   products face, while the code review itself is genuine — see
-   [Mentoring](/start/mentoring/).
+2. **They are somewhere to learn properly.** Mentoring follows the standards
+   Codrlabs holds its own products to — what users expect, real constraints,
+   rigorous review. See [Mentoring](/start/mentoring/).
 
 ## What lives here
 
