@@ -223,6 +223,19 @@ Status as of 2026-09-10.
       code. Checked: 0 identifiers wrongly capitalised, 0 lowercase brand words
       left in prose; build passes with title "Codrlabs Open". GitHub repo
       description updated to match.
+- [x] **Repository deleted and recreated** (2026-09-10) `[verified]` — a
+      force-push leaves the old commits readable on GitHub by SHA, and the
+      public events feed listed those SHAs, so rewriting history alone was not
+      enough. You deleted `codrlabs/open`; it was recreated from the clean local
+      history (18 commits, 0 unreachable objects). Checked after deletion: the
+      old commit pages and raw files return 404, and the events feed lists none
+      of the old SHAs. Restored: public visibility, description, homepage,
+      topics, Pages with `build_type=workflow`, custom domain
+      `open.codrlabs.com`, HTTPS enforced — GitHub kept the approved certificate
+      for the domain, so there was no certificate wait. Actions history,
+      artifacts and deployments from the old repository went with it. This
+      supersedes the force-push described in "History rewritten" above; anyone
+      holding an old clone must re-clone.
 
 ## Open
 
