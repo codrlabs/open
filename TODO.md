@@ -97,7 +97,25 @@ Status as of 2026-09-10.
        `[verified]` `codrlabs/vizably` has none (`corspat` and `tympy` are MIT),
        so vizably is source-available rather than open source until it gets one.
        Under the scope rule below, this is not actioned from here.
-2. [ ] **`open.codrlabs.com` — one DNS record left.** The domain is registered
+2. [x] **`open.codrlabs.com` live on Cloudflare Pages** `[verified]` — domain
+       fully `active` (verification + validation) at 02:45:08, HTTPS via edge
+       200. The one machine that could not load it was this PC: its first DNS
+       server is a resolver on the local network holding a cached NXDOMAIN from
+       before the record existed (Cloudflare SOA, negative-cache TTL 1800s). It
+       expires on its own; over a VPN the site loads, as you confirmed.
+       **Superseded 2026-09-10 by the move to GitHub Pages** — see the migration
+       section under Open. This Cloudflare setup stays live until cutover.
+       Earlier state: DNS record added; site serving; Pages validation
+       still finishing. Update 2026-09-10 `[verified]`: you added the record.
+       Cloudflare's authoritative NS returns proxied anycast IPs
+       (`104.21.0.178`, `172.67.128.42` + AAAA), and so do 1.1.1.1 and 8.8.8.8.
+       Pages verification flipped to `active`; validation `pending` (HTTP method,
+       Google CA). Straight to the edge (`curl --resolve …:104.21.0.178`),
+       `https://open.codrlabs.com/` returns **HTTP 200** with the current build,
+       and `http://` 301-redirects to HTTPS. The one machine that could not
+       resolve it was this PC — NXDOMAIN even after `Clear-DnsClientCache`,
+       while public resolvers answered. Being diagnosed.
+       Original entry: one DNS record left. The domain is registered
        on the Pages project, status `pending`, validation error
        `CNAME record not set`.
        Next (you): Cloudflare → `codrlabs.com` → DNS → Add record →
@@ -180,6 +198,47 @@ Status as of 2026-09-10.
       cache headers were present, so the cause is `[unverified]`.
 
 ## Open
+
+### Migration to GitHub Pages (decided 2026-09-10, your call)
+
+The repo is public now, which removes the only reason GitHub Pages was ruled
+out — on the org's Free plan, Pages serves public repos only. Order matters:
+the Cloudflare site stays live until GitHub Pages is verified serving, so there
+is no gap.
+
+- [x] Workflow `.github/workflows/deploy.yml` (build with `withastro/action`,
+      publish with `actions/deploy-pages`), `public/CNAME`, Pages enabled with
+      `build_type=workflow`, custom domain set on the repo. `[verified]`
+      2026-09-10: `gh api repos/codrlabs/open/pages` → `build_type: workflow`,
+      `cname: open.codrlabs.com`, `https_enforced: false` — expected until
+      GitHub issues a certificate, which needs DNS pointing at GitHub. Actions
+      were already allowed on the repo (`allowed_actions: all`), so no org-wide
+      setting was touched. Actions pinned to the upstream example's majors:
+      `actions/checkout@v7`, `withastro/action@v6`, `actions/deploy-pages@v5`
+      (latest v7.0.1 / v6.1.2 / v5.0.1). Checkout uses `fetch-depth: 0` so
+      `lastUpdated` dates come from real history. `paths-ignore` skips
+      redeploys for commits touching only `TODO.md`, `README.md` or `LICENSE`.
+- [ ] First workflow run green, and the site verified on GitHub's Pages IPs
+      *before* any DNS change.
+- [ ] **You:** change the `open` record to `CNAME codrlabs.github.io`,
+      **DNS-only (grey cloud)**, so GitHub can issue its certificate.
+- [ ] Certificate issued → set `https_enforced: true`.
+- [ ] Remove the custom domain from the Cloudflare Pages project, then delete
+      the `codrlabs-open` Cloudflare project.
+- [ ] Recommended, **you:** verify **`open.codrlabs.com` only** for GitHub Pages
+      (one TXT record — GitHub shows the exact name and value when you add the
+      domain). Deliberately *not* the apex `codrlabs.com`: verifying the company
+      domain in this org would tie all of `codrlabs.com` to the open org on
+      GitHub. Scoping it to `open.` keeps the protection against a
+      dangling-record takeover without spreading into the company domain.
+      `[falsified]` — this bullet first recommended verifying the apex
+      `codrlabs.com`, which is exactly the contamination you ruled out.
+
+**Keep codrlabs open's footprint in company resources minimal** (your
+instruction, 2026-09-10). After cutover, the whole footprint in the company's
+`codrlabs.com` zone should be the `open` CNAME plus the optional verification
+TXT — nothing at the apex, no org-wide GitHub settings changed, and the
+`codrlabs-open` project gone from the company Cloudflare account.
 
 - [ ] **Scan pipeline page.** `vizably/overview.md` admits it is missing.
       Reading vizably's docs for source material is fine — see the scope rule

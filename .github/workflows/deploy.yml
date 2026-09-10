@@ -1,0 +1,49 @@
+# Builds the site and publishes it to GitHub Pages on every push to main.
+# Based on the official withastro/action example. Astro 7 needs Node >= 22.12;
+# the action defaults to Node 24, so no node-version override is needed.
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+    # Files that never reach the built site; committing only these should not
+    # trigger a redeploy.
+    paths-ignore:
+      - TODO.md
+      - README.md
+      - LICENSE
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# One deploy at a time; a newer push waits rather than racing an older one.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+        with:
+          # Starlight's lastUpdated reads each page's date from git history;
+          # a shallow clone would stamp every page with the latest commit.
+          fetch-depth: 0
+      - name: Install, build, and upload site
+        uses: withastro/action@v6
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5
