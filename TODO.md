@@ -253,6 +253,29 @@ Status as of 2026-09-10.
 
 ## Open
 
+- [ ] **Organization profile README** (asked 2026-09-10). `[verified]` against
+      GitHub's "Customizing your organization's profile" docs: a public org
+      README comes from a public repo named `.github`, file `profile/README.md`;
+      a members-only one from a private `.github-private` repo at the same path.
+      Pins are separate (up to six public, six for members) and only an org
+      owner can set them, in the UI. Before starting, neither repo existed and 0
+      repos were pinned, which is why the public view led with the two archived
+      repos. Testing it now; you keep the repo if it works, otherwise delete it.
+      **Works** `[verified]` 2026-09-10: public repo `codrlabs/.github` created,
+      `profile/README.md` committed (`0468c3b`). The draft passed every check
+      before publishing: no "platform", no personal details, no diminishing
+      phrasing, brand capitalised, all 15 links 200. A logged-out request to
+      github.com/codrlabs showed the README text at 17:05:36.
+      Still yours:
+      - **Pin repositories** — UI only. GitHub's GraphQL has pin mutations for
+        environments, issues and issue comments, none for repositories.
+        Suggested: `vizably` and `open`, so archived repos stop leading.
+      - **Keep or delete** `codrlabs/.github`, per your test.
+      Options, not done: a members-only README (private `.github-private`,
+      `profile/README.md`); and org-wide default `CONTRIBUTING.md`,
+      `CODE_OF_CONDUCT.md`, `SECURITY.md`, `SUPPORT.md` and issue/PR templates,
+      which this same `.github` repo can provide for every repo that lacks its
+      own — directly relevant to finalize item 6.
 - [x] **AI assistance section** (asked 2026-09-10). Guidance on using AI as a
       developer, and specifically while learning or contributing voluntarily,
       grounded in research rather than opinion. Starting point you gave: Lars
