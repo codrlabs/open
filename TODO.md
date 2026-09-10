@@ -100,3 +100,11 @@ projects. Built with Astro + Starlight. First project documented: **Vizably**.
 
 - Dev server: `npm run dev` → http://localhost:4321
 - Build check: `npm run build` (runs `astro check` + `astro build`)
+- **Restart the dev server after adding a content file or editing
+  `astro.config.mjs`.** Seen 2026-09-09: a dev server started at 18:12 kept
+  reporting `The slug "start/mentoring" specified in the Starlight sidebar
+  config does not exist` for a file written at 18:19. Starlight validates
+  sidebar slugs against `.astro/data-store.json`, and the Windows file watcher
+  had not re-scanned. The file was fine — a clean `rm -rf .astro dist &&
+  npm run build` emitted all 9 pages.
+  Fix: `q` + Enter in the dev terminal, `rm -rf .astro`, `npm run dev`.
