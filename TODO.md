@@ -1,6 +1,8 @@
 # codrlabs open — task list
 
-Site: **open.codrlabs.com** · Repo: **codrlabs/open** (private for now)
+Site: **open.codrlabs.com** (custom domain pending one DNS record — checklist
+item 2; live meanwhile at https://codrlabs-open.pages.dev) · Repo:
+**codrlabs/open** (public since 2026-09-10)
 Local: `open-solutions/open in the codrlabs workspace`
 
 Docs hub for the codrlabs open-solutions work — unpaid, mentoring-driven
@@ -89,27 +91,26 @@ projects. Built with Astro + Starlight. First project documented: **Vizably**.
 
 ## Finalize checklist — do these in order
 
-You asked to be reminded of this. Nothing below is done.
+Status as of 2026-09-10.
 
-1. [ ] **Add a `LICENSE` to `codrlabs/vizably`.** `[verified]` it has none
-       (`gh api repos/codrlabs/vizably --jq .license` → null), while `corspat`
-       and `tympy` are MIT. Without it the code is source-available, not open
-       source: contributors get no rights, and the status of *their*
-       contributions is unclear. This is the biggest legal gap and it gates the
-       "open source" claim the whole site makes.
-       Next: `gh api repos/codrlabs/vizably/contents/LICENSE` after adding, or
-       add it via the GitHub UI's licence template (MIT, to match the others).
-2. [ ] **Attach `open.codrlabs.com`** — Cloudflare dashboard → Workers & Pages →
-       `codrlabs-open` → Custom domains → Add. DNS already on Cloudflare, so the
-       CNAME and cert are automatic. Cannot be done from the CLI here: the
-       wrangler token has `zone (read)` only.
-3. [ ] **Make `codrlabs/open` public.**
-       Next: `gh repo edit codrlabs/open --visibility public --accept-visibility-change-consequences`
-       Before running it, confirm the ground rules above still hold — history is
-       currently clean (`git grep` across all revisions: 0 hits for the internal
-       hostname).
-4. [ ] **Enable `editLink`** in `astro.config.mjs` once public — edit links
-       would 404 for visitors while the repo is private.
+1. [ ] **Vizably LICENSE — belongs to the vizably effort, not this repo.**
+       `[verified]` `codrlabs/vizably` has none (`corspat` and `tympy` are MIT),
+       so vizably is source-available rather than open source until it gets one.
+       Under the scope rule below, this is not actioned from here.
+2. [ ] **`open.codrlabs.com` — one DNS record left.** The domain is registered
+       on the Pages project, status `pending`, validation error
+       `CNAME record not set`.
+       Next (you): Cloudflare → `codrlabs.com` → DNS → Add record →
+       `CNAME` · name `open` · target `codrlabs-open.pages.dev` · Proxied.
+       Validation and the certificate then complete on their own.
+       Cannot be done from here `[verified]`: the wrangler OAuth token resolves
+       the zone but gets `Authentication error` (code 10000) even *listing* DNS
+       records. `[unverified]` that your other Pages subdomains use proxied
+       records — could not read them to check; proxied is Cloudflare's default
+       for Pages.
+       Verify: `Resolve-DnsName open.codrlabs.com -Server 1.1.1.1`
+3. [x] **`codrlabs/open` is public** `[verified]` — see Done.
+4. [x] **`editLink` enabled** `[verified]` — see Done.
 5. [ ] **Have a lawyer read `start/platform.md`.** It is written as a plain
        description and says so, but it describes an unpaid mentoring
        arrangement and how academic-credit placements work, for a company in Canada. Unpaid-work and
@@ -132,6 +133,31 @@ You asked to be reminded of this. Nothing below is done.
       `vizably/account-storage.md` (portable account, fit-check, concurrency),
       from `docs/plans/architecture-map.md` and
       `docs/guides/auth_storage_guide/accountStorageContract.md`.
+- [x] **LICENSE added before going public** (2026-09-10) `[verified]` — MIT,
+      matching `corspat`/`tympy`. The repo had none, which contradicted the
+      platform page's own "check for a licence before contributing" advice.
+      `gh api repos/codrlabs/open/license` → `MIT` (detection lagged a few
+      seconds behind the push; an immediate `gh repo view` said `none`).
+- [x] **Pre-public sweep** `[verified]` — `git grep` for keys/tokens/private
+      keys in tracked files: only prose hits (CSS "tokens", review checklist).
+      All revisions: 0 hits for internal hostnames, `.local`, private IP ranges.
+      30 tracked files, all expected.
+- [x] **Light theme verified visually** `[verified]` — screenshot of a build
+      copy with `data-theme="light"` injected *after* Starlight's inline theme
+      script (setting the `<html>` attribute alone is overwritten on load).
+      White ground, dark text, magenta accent, legible badges.
+- [x] **Repo made public** (2026-09-10) `[verified]` — `gh repo view codrlabs/open`
+      → `PUBLIC`, homepage `https://open.codrlabs.com`, topics `astro,
+      documentation, mentoring, open-source, starlight`.
+- [x] **`editLink` + `lastUpdated` enabled and live** `[verified]` — production
+      alias serves `github.com/codrlabs/open/edit/main/...`; that target returns
+      HTTP 200 publicly.
+- [x] **Custom domain registered on the Pages project** `[verified]` — `POST
+      /accounts/.../pages/projects/codrlabs-open/domains` with the wrangler
+      OAuth token succeeded; `pages (write)` was enough for the attach.
+      `[falsified]` — the earlier claim that attaching the domain "cannot be done
+      from here" was wrong for this step. It *was* right that Cloudflare would
+      not create the DNS record: validation reported `CNAME record not set`.
 
 ## Open
 
@@ -162,13 +188,18 @@ not to be actioned from this repo**:
   vizably keeps its project-specific guides, the cross-project practices live
   here, and vizably points at this site.
 
-- [ ] **BLOCKING: attach `open.codrlabs.com`.** The domain does not resolve yet.
+- [x] **Superseded 2026-09-10 → finalize checklist item 2.** Original entry:
+      ~~BLOCKING: attach `open.codrlabs.com`.~~ The domain does not resolve yet.
       Cannot be done from here — the wrangler token has `zone (read)` only, and
       adding a Pages custom domain needs DNS write.
       Next (you): Cloudflare dashboard → Workers & Pages → `codrlabs-open` →
       Custom domains → Add `open.codrlabs.com`. DNS is already on Cloudflare
       (`memphis.ns` / `nia.ns`), so the CNAME and cert are automatic.
-- [ ] **Decide hosting for good: Cloudflare Pages vs GitHub Pages.**
+      `[falsified]` twice: the attach did *not* need DNS write (`pages (write)`
+      was enough), and the CNAME was *not* created automatically when attached
+      through the API — validation reported `CNAME record not set`.
+- [x] **Decided 2026-09-09: Cloudflare Pages** (your choice of the recommended
+      option). Original entry: Decide hosting for good: Cloudflare Pages vs GitHub Pages.
       `[verified]` GitHub Pages cannot serve this repo today — the `codrlabs`
       org is on the **Free** plan (`gh api orgs/codrlabs --jq .plan.name`), and
       Pages only serves *public* repos on Free. It would work once the repo is
@@ -187,19 +218,24 @@ not to be actioned from this repo**:
       Built output now contains 0 third-party URLs and 5 local `.woff2` files.
 - [ ] **Connect Cloudflare Pages to GitHub for deploy-on-push** (optional) —
       deploys are currently direct uploads via `wrangler pages deploy`.
-- [ ] **Self-host the fonts.** `src/styles/brand.css` pulls Plus Jakarta Sans
+      `[unverified]` Cloudflare does not convert a Direct Upload project to Git
+      integration in place; it would mean a new Git-connected project and moving
+      the custom domain onto it. Not tested.
+- [x] **Self-host the fonts** — done 2026-09-09, see "Fonts self-hosted" above.
+      Original entry: `src/styles/brand.css` pulls Plus Jakarta Sans
       and DM Sans from Google Fonts over the network — a third-party request on
       every page load. `[unverified]` — not measured.
       Next: `npm i @fontsource-variable/plus-jakarta-sans @fontsource-variable/dm-sans`
       and swap the `@import`.
-- [ ] **SVG favicon.** `public/favicon.png` is a 400×400 raster of the org
-      avatar; an SVG of the node mark would be crisper and smaller.
-- [ ] **Verify the logo on a light background.** The mark has pale halo rings
-      that may disappear in light theme. `[unverified]` — only checked that it
-      builds, not how it looks.
-      Next: `npm run dev`, toggle the theme switcher.
-- [ ] **Enable `editLink`** in `astro.config.mjs` once the repo is public —
-      edit links would 404 for visitors while it is private.
+- [ ] **SVG favicon.** `public/favicon.png` is now a 512×512 raster of the
+      trimmed mark; an SVG of the node mark would be crisper and smaller.
+- [x] **Verify the logo on a light background** — done 2026-09-10 `[verified]`
+      by light-theme screenshot: mark and nodes clearly legible; the pale halo
+      rings are faint but were never load-bearing. Original entry: The mark has
+      pale halo rings that may disappear in light theme.
+- [x] **Enable `editLink`** — done 2026-09-10 `[verified]`, see Done. Original
+      entry: enable in `astro.config.mjs` once the repo is public — edit links
+      would 404 for visitors while it is private.
 - [ ] **Mentoring page operational detail** — `start/mentoring.md` deliberately
       stops short of inventing how to request a mentor, session cadence, etc.
       It carries a visible "still being written" callout until you decide.
@@ -209,21 +245,21 @@ not to be actioned from this repo**:
       `docs/guides/auth_storage_guide/*`. Decide what is public-facing vs internal
       before copying — mentorship docs are private and must not land here.
       Next: `ls ../vizably/docs/`
-- [ ] **Pick a host.** GitHub Pages (needs `public/CNAME` + `@astrojs/` static
-      output + Actions workflow) vs Cloudflare Pages vs Vercel. `[unverified]` —
-      no host chosen or configured yet.
-      Next: decide, then add the deploy config.
-- [ ] **DNS for `open.codrlabs.com`.** CNAME record at the codrlabs DNS provider
-      pointing at the chosen host. `[unverified]` — not touched.
-- [ ] **Decide when to flip the repo public.** Currently private.
-      Next: `gh repo edit codrlabs/open --visibility public --accept-visibility-change-consequences`
+- [x] **Pick a host** — Cloudflare Pages, decided 2026-09-09. Original entry:
+      GitHub Pages (needs `public/CNAME` + `@astrojs/` static
+      output + Actions workflow) vs Cloudflare Pages vs Vercel.
+- [ ] **DNS for `open.codrlabs.com`** — now tracked as finalize checklist item 2,
+      which has the exact record. Original entry: CNAME record at the codrlabs
+      DNS provider pointing at the chosen host.
+- [x] **Flip the repo public** — done 2026-09-10 `[verified]`, see Done.
+      Original entry: Decide when to flip the repo public. Currently private.
 - [ ] **Next active project.** Only Vizably is live; `corspat` and `tympy` are
       archived on GitHub and documented as such. A new project gets its own
       top-level sidebar section when it has something worth documenting.
 
 ## Ground rules
 
-**This repo is going public.** Treat every commit as already published — git
+**This repo is public** (since 2026-09-10). Every commit is published — git
 history is not a private scratchpad, and scrubbing it after the fact means a
 force-push that breaks every clone and fork.
 
