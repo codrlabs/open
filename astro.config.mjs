@@ -20,6 +20,10 @@ export default defineConfig({
 				alt: 'codrlabs',
 			},
 			favicon: '/favicon.png',
+			editLink: {
+				baseUrl: 'https://github.com/codrlabs/open/edit/main/',
+			},
+			lastUpdated: true,
 			customCss: [
 				'@fontsource-variable/plus-jakarta-sans',
 				'@fontsource-variable/dm-sans',
