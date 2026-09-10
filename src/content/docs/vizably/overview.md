@@ -5,10 +5,14 @@ sidebar:
   order: 1
 ---
 
+<span class="codr-status codr-status--active">Active</span>
+
 **Vizably** is an open-source web accessibility scanner. Paste a URL, get a
 categorized, human-readable WCAG report with fix suggestions.
 
-An idea by [@DevOlabode](https://github.com/DevOlabode).
+An idea by [@DevOlabode](https://github.com/DevOlabode). Source at
+[github.com/codrlabs/vizably](https://github.com/codrlabs/vizably) — this is the
+project to contribute to, see [Contributing](/start/contributing/).
 
 ## The problem it solves
 
@@ -44,5 +48,6 @@ hosting, no lock-in, and an account that is portable across devices.
 
 :::note[More to come]
 Setup, the scan pipeline, and the account-storage contract each need their own
-page here. For now the authoritative detail lives in the Vizably repository.
+page here. For now the authoritative detail lives in the
+[Vizably repository](https://github.com/codrlabs/vizably).
 :::

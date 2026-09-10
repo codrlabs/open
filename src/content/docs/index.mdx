@@ -1,46 +1,74 @@
 ---
-title: codrlabs open
-description: Open-source projects built and mentored in the open by codrlabs.
+title: codrlabs
+description: The open side of codrlabs — software built in the open, and the people we mentor through building it.
 template: splash
+head:
+  # Without this the document title renders as "codrlabs | codrlabs", because
+  # the page title and the site title are the same word.
+  - tag: title
+    content: codrlabs — building and mentoring in the open
 hero:
-  tagline: Software we build in the open, and mentor people through — no invoice attached.
+  tagline: The open side of codrlabs. Software built in public, and the people we mentor through building it — no client, no invoice.
+  image:
+    file: ../../assets/codrlabs-open.png
   actions:
     - text: What this is
       link: /start/what-this-is/
       icon: right-arrow
-    - text: Vizably
-      link: /vizably/overview/
-      icon: document
+    - text: Mentoring
+      link: /start/mentoring/
+      icon: heart
+      variant: secondary
+    - text: Browse the code
+      link: https://github.com/codrlabs
+      icon: external
       variant: minimal
 ---
 
-import { Card, CardGrid } from '@astrojs/starlight/components';
+import { Card, CardGrid, LinkCard } from '@astrojs/starlight/components';
+
+## What we do here
+
+<CardGrid>
+	<Card title="Mentor by building" icon="heart">
+		People learn on software that has real users, real constraints and real
+		review — not on exercises. Contributors ship to a live codebase and get
+		their pull requests read line by line.
+	</Card>
+	<Card title="Build in the open" icon="open-book">
+		Source, architecture decisions and the reasoning behind them are public,
+		including the parts that turned out wrong. The reasoning is the teaching
+		material.
+	</Card>
+	<Card title="Solve a real problem" icon="puzzle">
+		Every project here exists because someone hit the problem and found no
+		good open alternative. Nothing is built purely as a teaching exercise.
+	</Card>
+	<Card title="Keep it free to run" icon="rocket">
+		These are unpaid projects, so they are designed to cost almost nothing to
+		operate — otherwise they quietly die when the enthusiasm does.
+	</Card>
+</CardGrid>
 
 ## Projects
 
-<CardGrid>
-	<Card title="Vizably" icon="magnifier">
-		Paste a URL, get a categorized, human-readable WCAG accessibility report
-		with fix suggestions. An idea by
-		[@DevOlabode](https://github.com/DevOlabode).
+<LinkCard
+	title="Vizably — accessibility scanner"
+	description="Paste a URL, get a categorized WCAG report in plain language with fix suggestions. Node + Express, React + Vite, and no database of its own. Actively developed. An idea by @DevOlabode."
+	href="/vizably/overview/"
+/>
 
-		[Read the docs →](/vizably/overview/)
-	</Card>
-	<Card title="More coming" icon="add-document">
-		Other open-solutions projects get their own section here as their docs
-		are written.
-	</Card>
-</CardGrid>
+<LinkCard
+	title="All projects"
+	description="Everything in the codrlabs GitHub organisation, active and archived, with what each one is and where it stands."
+	href="/projects/all/"
+/>
 
-## Why this exists
+## Getting involved
 
-<CardGrid>
-	<Card title="Built in the open" icon="open-book">
-		Source, decisions, and the reasoning behind them are public — including
-		the parts that went wrong.
-	</Card>
-	<Card title="Mentoring, not billing" icon="heart">
-		These projects are a place for people to make real contributions to real
-		software and get reviewed properly. No client, no invoice.
-	</Card>
-</CardGrid>
+Start with [Contributing](/start/contributing/). The short version: pick an issue
+in one of the repositories under
+[github.com/codrlabs](https://github.com/codrlabs), open a pull request, and
+expect a review that explains itself.
+
+Questions go to [open@codrlabs.com](mailto:open@codrlabs.com).

@@ -7,14 +7,30 @@ export default defineConfig({
 	site: 'https://open.codrlabs.com',
 	integrations: [
 		starlight({
-			title: 'codrlabs open',
+			title: 'codrlabs',
 			description:
-				'Open-source projects built and mentored in the open by codrlabs.',
+				'The open side of codrlabs — software built in the open, and the people we mentor through building it.',
+			logo: {
+				src: './src/assets/codrlabs-open.png',
+				alt: 'codrlabs',
+			},
+			favicon: '/favicon.png',
+			customCss: ['./src/styles/brand.css'],
 			social: [
 				{
 					icon: 'github',
 					label: 'GitHub',
 					href: 'https://github.com/codrlabs',
+				},
+				{
+					icon: 'linkedin',
+					label: 'LinkedIn',
+					href: 'https://www.linkedin.com/company/codrlabs',
+				},
+				{
+					icon: 'email',
+					label: 'Email',
+					href: 'mailto:open@codrlabs.com',
 				},
 			],
 			sidebar: [
@@ -22,11 +38,29 @@ export default defineConfig({
 					label: 'Start here',
 					items: [
 						{ label: 'What this is', slug: 'start/what-this-is' },
+						{ label: 'Mentoring', slug: 'start/mentoring' },
 						{ label: 'Contributing', slug: 'start/contributing' },
 					],
 				},
 				{
+					label: 'Projects',
+					items: [
+						{ label: 'All projects', slug: 'projects/all' },
+						{
+							label: 'Corspat',
+							slug: 'projects/corspat',
+							badge: { text: 'Archived', variant: 'default' },
+						},
+						{
+							label: 'Tympy',
+							slug: 'projects/tympy',
+							badge: { text: 'Archived', variant: 'default' },
+						},
+					],
+				},
+				{
 					label: 'Vizably',
+					badge: { text: 'Active', variant: 'success' },
 					items: [{ autogenerate: { directory: 'vizably' } }],
 				},
 			],
