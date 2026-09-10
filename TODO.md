@@ -129,13 +129,13 @@ Status as of 2026-09-10.
        Verify: `Resolve-DnsName open.codrlabs.com -Server 1.1.1.1`
 3. [x] **`codrlabs/open` is public** `[verified]` — see Done.
 4. [x] **`editLink` enabled** `[verified]` — see Done.
-5. [ ] **Have a lawyer read `start/platform.md`.** It is written as a plain
+5. [ ] **Have a lawyer read `start/fine-print.md`.** It is written as a plain
        description and says so, but it describes an unpaid mentoring
        arrangement and how academic-credit placements work, for a company in Canada. Unpaid-work and
        worker-classification rules are jurisdiction-specific and this has had
        no legal review.
 6. [ ] **Add `CONTRIBUTING.md` and `CODE_OF_CONDUCT.md`** to the org.
-       `[verified]` neither exists in any repo. The platform page currently
+       `[verified]` neither exists in any repo. The fine-print page currently
        admits this gap in a visible callout — remove that callout once closed.
 
 - [x] **Renamed to "Codrlabs Open"** (2026-09-10) `[verified]` — navbar title in
@@ -155,7 +155,7 @@ Status as of 2026-09-10.
       `docs/guides/auth_storage_guide/accountStorageContract.md`.
 - [x] **LICENSE added before going public** (2026-09-10) `[verified]` — MIT,
       matching `corspat`/`tympy`. The repo had none, which contradicted the
-      platform page's own "check for a licence before contributing" advice.
+      fine-print page's own "check for a licence before contributing" advice.
       `gh api repos/codrlabs/open/license` → `MIT` (detection lagged a few
       seconds behind the push; an immediate `gh repo view` said `none`).
 - [x] **Pre-public sweep** `[verified]` — `git grep` for keys/tokens/private
@@ -204,7 +204,7 @@ Status as of 2026-09-10.
       problem" card ("nothing is built purely as a teaching exercise"),
       `start/mentoring.md` ("software that other people actually use", and
       "hosting budgets" as a real constraint), and `start/what-this-is.md`
-      ("real code review on real software"). All rewritten. `start/platform.md`
+      ("real code review on real software"). All rewritten. `start/fine-print.md`
       now says outright that the projects have no real user base, and lists
       "not production work" under what mentoring is not.
       Assumption, not confirmed: "reviews" means user/app-store reviews, which
@@ -236,6 +236,20 @@ Status as of 2026-09-10.
       artifacts and deployments from the old repository went with it. This
       supersedes the force-push described in "History rewritten" above; anyone
       holding an old clone must re-clone.
+- [x] **Page renamed "The fine print"** (2026-09-10) `[verified]` — it was
+      "The platform", which collided with platform.codrlabs.com, a separate
+      Codrlabs site. File moved to `src/content/docs/start/fine-print.md`;
+      sidebar label, homepage link and TODO pointers updated; "how the platform
+      works" in `practices/documentation.md` now reads "how Codrlabs Open
+      works". Build check: `/start/fine-print/` built with title "The fine print
+      | Codrlabs Open", no `/start/platform/` route, sidebar shows "The fine
+      print" with 0 old labels or links. The only "platform" left in built HTML
+      is Starlight's search-shortcut script (`navigator.platform`); a
+      visible-text pass found none. In this file, `/start/platform/` survives
+      only inside an earlier dated check, and the other site's project is the other
+      site's own project. No redirect from the old URL, on purpose: the site is
+      new, has no archived captures, and a redirect would keep "platform" in its
+      URL space.
 
 ## Open
 
@@ -359,7 +373,7 @@ not to be actioned from this repo**:
       Pages only serves *public* repos on Free. It would work once the repo is
       public, but it permanently couples the site being up to the repo being
       public. Cloudflare Pages is live now and is indifferent to visibility.
-- [x] **Platform page written** `[verified]` — `src/content/docs/start/platform.md`,
+- [x] **Fine-print page written** `[verified]` — `src/content/docs/start/fine-print.md`,
       linked from the homepage and the sidebar. Covers: what Codrlabs Open is,
       the three ways to take part (open contribution / mentored / school
       placement), an explicit "what mentoring is not" section (not employment,
@@ -368,7 +382,7 @@ not to be actioned from this repo**:
       callout. Still needs item 5 in the checklist above.
 - [x] **Fonts self-hosted** `[verified]` — `@fontsource-variable/*` via
       `customCss`; the Google Fonts `@import` disclosed every visitor's IP to a
-      third party, which contradicted the platform page's privacy section.
+      third party, which contradicted the fine-print page's privacy section.
       Built output now contains 0 third-party URLs and 5 local `.woff2` files.
 - [x] **Superseded 2026-09-10 — deploy-on-push now comes from GitHub Actions**
       (`.github/workflows/deploy.yml`); Cloudflare Pages is no longer used.
@@ -425,7 +439,7 @@ Nothing proprietary crosses into this repo, ever:
 - No client names, client work, or anything under NDA.
 - No private ops/runbook content, in files *or* commit messages.
 - No names of contributors, mentees, or their schools without written consent —
-  see the platform page work below.
+  see the fine-print page.
 - Nothing about any individual contributor's circumstances: not who they are,
   not how many people are in a given situation, not any arrangement they are
   under. Describe how things work in general, never how they stand today. In a

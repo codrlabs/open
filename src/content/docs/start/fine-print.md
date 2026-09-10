@@ -1,5 +1,5 @@
 ---
-title: The platform
+title: The fine print
 description: What Codrlabs Open is, how people take part, and the terms that work happens under.
 sidebar:
   order: 3

@@ -59,7 +59,7 @@ export default defineConfig({
 					items: [
 						{ label: 'What this is', slug: 'start/what-this-is' },
 						{ label: 'Mentoring', slug: 'start/mentoring' },
-						{ label: 'The platform', slug: 'start/platform' },
+						{ label: 'The fine print', slug: 'start/fine-print' },
 						{ label: 'Contributing', slug: 'start/contributing' },
 					],
 				},

@@ -12,7 +12,7 @@ component.
 ## This site is the source of truth
 
 Anything that outlives a single repository lives here — practices, architecture
-explanations, project overviews, how the platform works. A reader should not
+explanations, project overviews, how Codrlabs Open works. A reader should not
 have to clone a repo to understand what a project is or how work is done.
 
 What stays in the repository:
