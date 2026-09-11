@@ -88,6 +88,30 @@ projects. Built with Astro + Starlight. First project documented: **Vizably**.
 - [x] **Internal hostname scrubbed from history** `[verified]` — it had reached
       `TODO.md` in 3 commits. `git filter-branch` + force-push with an explicit
       lease; `git grep` across all revisions now returns 0.
+- [x] **Working setup page** `[verified]` — new
+      `src/content/docs/practices/working-setup.md` (sidebar order 7), plus a row
+      in the practices index table. `npm run build` → 23 pages, up from 22;
+      `dist/practices/working-setup/index.html` built with all four outbound
+      links present. Distilled from an internal team note on tooling — breaks,
+      screen light, remote access — so the guidance sits somewhere public,
+      versioned and reviewable instead of in chat. Nothing internal crossed over:
+      no channel names, no client machines, no infrastructure.
+- [x] **"Blue light causes the eye strain"** `[falsified]` — the source note
+      framed night-light mode as an eye-strain fix and cited an SEO listicle.
+      Checked: Cochrane 2023 (17 randomised trials) found blue-light filtering
+      lenses probably make no difference to eye strain; the American Academy of
+      Ophthalmology does not recommend blue-blocking glasses and says there is no
+      evidence screen light damages the eyes; Duraccio et al., *Sleep Health*
+      7(4) 2021 found iPhone Night Shift made no difference to sleep outcomes
+      either. The page keeps night light as a comfort setting and puts 20-20-20
+      and blinking where the eye-strain claim used to be. All four sources are
+      cited on the page.
+- [x] **Stretchly settings corrected** `[verified]` — the schedule in the source
+      note (20s every 20 min, 5 min every hour) is not what Stretchly ships:
+      defaults are 10 min and 30 min, and the long-break interval is counted in
+      mini breaks rather than minutes, so an hourly long break is `3`, not `60`.
+      Both written into the page as a callout. `gh api repos/hovancik/stretchly`
+      → BSD-2-Clause, not archived, last push 2026-08-14.
 
 ## Finalize checklist — do these in order
 
@@ -598,6 +622,12 @@ not to be actioned from this repo**:
 - [ ] **Next active project.** Only Vizably is live; `corspat` and `tympy` are
       archived on GitHub and documented as such. A new project gets its own
       top-level sidebar section when it has something worth documenting.
+- [ ] **More internal tooling notes worth bringing across.**
+      `practices/working-setup` covers breaks, screen and remote access. Anything
+      else generic — editor setup, shell, git config, terminal — can follow the
+      same test: if it would be true at any company it belongs here; if it names
+      our infrastructure, clients or people it does not. Next: ask which notes
+      are worth migrating.
 
 ## Ground rules
 

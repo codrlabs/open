@@ -10,7 +10,7 @@ Codrlabs Open projects. If a project's own docs disagree with this section,
 this section is what we meant.
 
 None of it was written in the abstract. Every page here is distilled from
-practice on a real codebase — mostly [Vizably](/vizably/overview/) — including
+practice — mostly on a real codebase, [Vizably](/vizably/overview/) — including
 the parts that went wrong first. Where a rule exists, it exists because
 something broke without it.
 
@@ -23,6 +23,7 @@ something broke without it.
 | [Reviewing](/practices/reviewing/) | "How do I review someone else's pull request?" |
 | [Git recovery](/practices/git-recovery/) | "I've made a mess of this branch. How do I fix it?" |
 | [Documentation](/practices/documentation/) | "Where does this document go, and does it belong in a repo at all?" |
+| [Working setup](/practices/working-setup/) | "How do I get through a long session, and what are the rules for connecting to someone else's machine?" |
 
 ## The through-line
 
