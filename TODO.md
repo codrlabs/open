@@ -253,13 +253,20 @@ Status as of 2026-09-10.
 
 ## Open
 
-- [ ] **Homepage cards are hard to scan** (asked 2026-09-10) — Projects and
-      "How we work" are full-width cards carrying paragraph-length descriptions,
-      so the page reads as a wall. Shorten each to a scannable line and lay them
-      out as a grid.
-- [ ] **Navbar socials: Discord, GitHub, Email** (asked 2026-09-10) — in that
-      order, and drop LinkedIn: that account belongs to Codrlabs the company,
-      not to Codrlabs Open.
+- [x] **Homepage cards are hard to scan** (asked 2026-09-10) — Projects and
+      "How we work" were full-width cards carrying paragraph-length descriptions,
+      so the page read as a wall. **Fixed** `[verified]`: both are `<CardGrid>`
+      (Starlight's grid is one column below 50rem, two above) with one-line
+      descriptions, and "Getting involved" is two lines with the Discord link
+      beside the address. Vizably's credit to its originator moved to the project
+      page rather than being dropped — checked: present on `/vizably/overview/`,
+      absent from the homepage. Live: 3 card grids, every shortened line served,
+      619 internal links checked with 0 broken.
+- [x] **Navbar socials: Discord, GitHub, Email** (asked 2026-09-10) — in that
+      order, and LinkedIn dropped: that account belongs to Codrlabs the company,
+      not to Codrlabs Open. **Done** `[verified]`: live header serves
+      `discord.com/invite/…`, `github.com/codrlabs`, `mailto:open@codrlabs.com`
+      in that order, and "linkedin" appears on 0 pages of the build.
 - [x] **Header should read as a logo lockup** (asked 2026-09-10) — logomark plus
       logotype, not an image sitting next to text. `[verified]` cause: Starlight
       sizes the mark to the full nav height and spaces it with `--sl-nav-gap`, so
