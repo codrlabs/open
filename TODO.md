@@ -253,6 +253,53 @@ Status as of 2026-09-10.
 
 ## Open
 
+### Repository audit, 2026-09-10
+
+Checked the public repo against its own rules — the ground rules below and
+`practices/documentation` ("never put internal detail in a public repository —
+hostnames, IPs, client names").
+
+Clean `[verified]`: no keys, tokens, private keys or account/zone identifiers in
+any tracked file or any revision; no third-party scripts, styles, images or
+iframes in the built site and no analytics, so the fine print's "no third-party
+requests" holds; `document.cookie` never used, so "sets no cookies" holds; 0
+images without alt text; `npm audit` reports 0 vulnerabilities.
+
+- [x] **Client names were in this repo** `[verified]` — a Cloudflare
+      verification note listed two other properties in the account by name,
+      breaking the ground rule against client names. Removed from the current
+      file; **still present in 11 commits of history** pending your call on
+      another history rewrite.
+- [x] **Browser storage was undisclosed** `[verified]` — the site stores
+      `starlight-theme` (localStorage) and `sl-sidebar-state` (sessionStorage).
+      True that it sets no cookies, but the privacy section now says what is
+      stored.
+- [x] **Hero gradient end fails contrast** `[verified]` — `#ac0c90` on `#0e0e16`
+      measured 2.94:1, under the 3:1 floor even for large text. Everything else
+      passes: status pills 6.22:1 and 7.5:1, gradient start 6.22:1. **Fixed**:
+      the gradient now ends on `--codr-magenta-on-dark: #cf3cb0`, the same hue
+      and chroma in OKLCH lightened until it reaches **4.51:1**. `#ac0c90` stays
+      the brand colour everywhere it sits on a light surface.
+- [x] **Actions are pinned to moving tags** — `withastro/action@v6` is
+      third-party, and a tag can be repointed. **Fixed**: all three pinned by
+      commit SHA with the version in a comment, and `.github/dependabot.yml`
+      added so they still get updated weekly, npm alongside them.
+- [x] **No Node version pinned** — no `engines` field and no `.nvmrc`; CI used
+      whatever the action defaulted to. **Fixed**: `node-version: 24` in the
+      workflow and an `.nvmrc` so local builds match CI.
+- [ ] **This repo does not follow its own workflow** `[verified]` — 26 commits,
+      no branches besides `main`, 0 pull requests, 0 issues, no branch
+      protection, while `practices/pull-requests` says one issue → one branch →
+      one pull request. Either work that way here or say plainly that the docs
+      hub is maintained directly.
+- [ ] **`CONTRIBUTING.md`, `CODE_OF_CONDUCT.md` and `SECURITY.md` are missing** —
+      the site tells other projects to have them. The org's `.github` repo can
+      supply all three to every repo at once.
+- [ ] **AI disclosure asymmetry** — `ai/contributing` asks contributors to say
+      how AI was used in a pull request. This repo's own commits say nothing.
+      Arguably out of scope (they are not pull requests), but it is the kind of
+      gap a reader will notice. Your call.
+
 - [x] **Homepage cards are hard to scan** (asked 2026-09-10) — Projects and
       "How we work" were full-width cards carrying paragraph-length descriptions,
       so the page read as a wall. **Fixed** `[verified]`: both are `<CardGrid>`
@@ -426,8 +473,8 @@ is no gap.
 - [x] Remove the custom domain from the Cloudflare Pages project, then delete
       the `codrlabs-open` Cloudflare project. **Done by you** (2026-09-10).
       `[verified]` `wrangler pages project list` no longer lists
-      `codrlabs-open`, and the account's other projects are
-      still listed with their domains, untouched. A first check through the raw
+      `codrlabs-open`, and the account's other projects are still listed with
+      their domains, untouched. A first check through the raw
       OAuth token was inconclusive — `Authentication error`, most likely an
       expired token — and my script had mislabelled that result as "gone";
       wrangler refreshes its own token, so its listing is the evidence.

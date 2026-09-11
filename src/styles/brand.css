@@ -29,6 +29,8 @@
 
 :root {
 	--codr-magenta: #ac0c90;
+	/* Same hue and chroma, lightened to clear 4.5:1 on the dark background. */
+	--codr-magenta-on-dark: #cf3cb0;
 	--codr-teal: #00bfaf;
 	--codr-orange: #e37343;
 	--codr-amber: #f6bd51;
@@ -56,9 +58,18 @@ h4 {
 /* Splash hero title.
  *
  * The gradient stops at magenta on purpose. Running it on to teal made sRGB
- * interpolate through blue, and there is no blue in the Codrlabs palette. */
+ * interpolate through blue, and there is no blue in the Codrlabs palette.
+ *
+ * It ends on a lighter magenta than the brand's #ac0c90: measured against the
+ * dark background, #ac0c90 gives 2.94:1, under the 3:1 floor for large text.
+ * #cf3cb0 is the same hue and chroma in OKLCH, lightened until it reaches
+ * 4.51:1. On a site about accessibility the headline has to pass. */
 .hero h1 {
-	background: linear-gradient(100deg, var(--codr-orange), var(--codr-magenta));
+	background: linear-gradient(
+		100deg,
+		var(--codr-orange),
+		var(--codr-magenta-on-dark)
+	);
 	-webkit-background-clip: text;
 	background-clip: text;
 	color: transparent;

@@ -1,0 +1,26 @@
+# Actions are pinned by commit SHA, so they only move when Dependabot proposes
+# it. This keeps that from meaning "never updated".
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: ci
+
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: chore
+    groups:
+      astro:
+        patterns:
+          - astro
+          - '@astrojs/*'
+          - starlight-theme-rapide
+      fonts:
+        patterns:
+          - '@fontsource-variable/*'

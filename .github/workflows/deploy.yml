@@ -1,6 +1,6 @@
 # Builds the site and publishes it to GitHub Pages on every push to main.
-# Based on the official withastro/action example. Astro 7 needs Node >= 22.12;
-# the action defaults to Node 24, so no node-version override is needed.
+# Based on the official withastro/action example. Actions are pinned by commit
+# SHA, with the version in a comment, and Dependabot keeps them current.
 name: Deploy to GitHub Pages
 
 on:
@@ -29,13 +29,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v7
+        # Pinned by commit SHA: a tag can be repointed at different code.
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           # Starlight's lastUpdated reads each page's date from git history;
           # a shallow clone would stamp every page with the latest commit.
           fetch-depth: 0
       - name: Install, build, and upload site
-        uses: withastro/action@v6
+        uses: withastro/action@e84f40bd8d2caa9e768ec82ad30dd81f0b280853 # v6.1.2
+        with:
+          # Pinned so CI cannot drift onto a runtime the site has not been built
+          # against. Astro 7 requires Node >= 22.12.
+          node-version: 24
 
   deploy:
     needs: build
@@ -46,4 +51,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v5
+        uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5.0.1

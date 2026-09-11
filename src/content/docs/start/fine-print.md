@@ -100,6 +100,8 @@ than open source.
 This site is a set of static pages.
 
 - It sets no cookies and runs no analytics or tracking scripts.
+- It remembers two things in your own browser, and sends neither anywhere: your
+  light or dark theme choice, and whether sidebar sections are open.
 - Fonts, styles and search are served from this site itself — no third-party
   requests, so no third party learns you visited.
 - Search runs entirely in your browser; queries are never sent anywhere.
