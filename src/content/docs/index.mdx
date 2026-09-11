@@ -58,45 +58,40 @@ import { Card, CardGrid, LinkCard } from '@astrojs/starlight/components';
 
 ## Projects
 
-<LinkCard
-	title="Vizably — accessibility scanner"
-	description="Paste a URL, get a categorized WCAG report in plain language with fix suggestions. Node + Express, React + Vite, and no database of its own. Actively developed. An idea by @DevOlabode."
-	href="/vizably/overview/"
-/>
-
-<LinkCard
-	title="All projects"
-	description="Everything in the Codrlabs GitHub organisation, active and archived, with what each one is and where it stands."
-	href="/projects/all/"
-/>
+<CardGrid>
+	<LinkCard
+		title="Vizably"
+		description="Paste a URL, get a plain-language WCAG report with fix suggestions."
+		href="/vizably/overview/"
+	/>
+	<LinkCard
+		title="All projects"
+		description="Every repository in the organisation, active and archived."
+		href="/projects/all/"
+	/>
+</CardGrid>
 
 ## How we work
 
-The practices below are the single source of truth for how work happens across
-these projects — distilled from building the ones above, including the parts
-that went wrong first.
+Distilled from building the projects above, including the parts that went wrong.
 
-<LinkCard
-	title="Engineering practices"
-	description="Naming the layer before you edit the file, one issue per pull request, reviewing to teach, and the git recovery steps that cost us an afternoon so they need not cost you one."
-	href="/practices/"
-/>
-
-<LinkCard
-	title="AI assistance"
-	description="How to use AI so it sharpens your skills instead of standing in for them — offload the mechanical, never the judgment. Grounded in the research on learning, productivity and security."
-	href="/ai/"
-/>
+<CardGrid>
+	<LinkCard
+		title="Engineering practices"
+		description="Name the layer before you edit the file. One issue per pull request. Reviews that teach."
+		href="/practices/"
+	/>
+	<LinkCard
+		title="AI assistance"
+		description="Offload the mechanical, never the judgment. Grounded in the research."
+		href="/ai/"
+	/>
+</CardGrid>
 
 ## Getting involved
 
-Start with [Contributing](/start/contributing/). The short version: pick an issue
-in one of the repositories under
-[github.com/codrlabs](https://github.com/codrlabs), open a pull request, and
-expect a review that explains itself.
+Pick an issue, open a pull request, expect a review that explains itself. Start
+with [Contributing](/start/contributing/); [the fine print](/start/fine-print/)
+sets out what this is and is not before you invest real time.
 
-Before you invest real time, [the fine print](/start/fine-print/) sets out what this
-is and is not — including that mentoring here is unpaid on both sides, is not
-employment, and does not lead to a job offer.
-
-Questions go to [open@codrlabs.com](mailto:open@codrlabs.com).
+Questions: [open@codrlabs.com](mailto:open@codrlabs.com) · [Discord](https://discord.com/invite/4KajkBHaQ)

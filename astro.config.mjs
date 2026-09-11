@@ -89,21 +89,18 @@ export default defineConfig({
 				'@fontsource-variable/dm-sans',
 				'./src/styles/brand.css',
 			],
+			// Discord first: it is where contributors actually talk. No LinkedIn —
+			// that account is Codrlabs the company, not Codrlabs Open.
 			social: [
-				{
-					icon: 'github',
-					label: 'GitHub',
-					href: 'https://github.com/codrlabs',
-				},
 				{
 					icon: 'discord',
 					label: 'Discord',
 					href: 'https://discord.com/invite/4KajkBHaQ',
 				},
 				{
-					icon: 'linkedin',
-					label: 'LinkedIn',
-					href: 'https://www.linkedin.com/company/codrlabs',
+					icon: 'github',
+					label: 'GitHub',
+					href: 'https://github.com/codrlabs',
 				},
 				{
 					icon: 'email',

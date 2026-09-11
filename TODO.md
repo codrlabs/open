@@ -253,6 +253,13 @@ Status as of 2026-09-10.
 
 ## Open
 
+- [ ] **Homepage cards are hard to scan** (asked 2026-09-10) — Projects and
+      "How we work" are full-width cards carrying paragraph-length descriptions,
+      so the page reads as a wall. Shorten each to a scannable line and lay them
+      out as a grid.
+- [ ] **Navbar socials: Discord, GitHub, Email** (asked 2026-09-10) — in that
+      order, and drop LinkedIn: that account belongs to Codrlabs the company,
+      not to Codrlabs Open.
 - [x] **Header should read as a logo lockup** (asked 2026-09-10) — logomark plus
       logotype, not an image sitting next to text. `[verified]` cause: Starlight
       sizes the mark to the full nav height and spaces it with `--sl-nav-gap`, so
