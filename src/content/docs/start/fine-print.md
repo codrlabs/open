@@ -89,11 +89,23 @@ Contributions go into public repositories.
   and publicly.
 
 :::note[Being fixed]
-Not every repository has a licence file yet, and the org does not yet publish a
-contributor guide or a code of conduct. Those gaps are known and are being
-closed. Until a repository has a `LICENSE`, treat it as source-available rather
-than open source.
+Not every repository has a licence file yet. Until one does, treat it as
+source-available rather than open source, and ask before contributing.
 :::
+
+## Conduct, and reporting a problem
+
+The organisation publishes a [code of
+conduct](https://github.com/codrlabs/.github/blob/main/CODE_OF_CONDUCT.md) —
+Contributor Covenant 2.1 — which applies across every repository. Reports go to
+open@codrlabs.com.
+
+Vulnerabilities go to the same address, or through **Security → Report a
+vulnerability** on the repository; never into a public issue. The policy is
+[SECURITY.md](https://github.com/codrlabs/.github/blob/main/SECURITY.md).
+
+How to contribute in the first place is on
+[Contributing](/start/contributing/).
 
 ## Privacy
 

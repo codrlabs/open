@@ -96,6 +96,23 @@ projects. Built with Astro + Starlight. First project documented: **Vizably**.
       screen light, remote access — so the guidance sits somewhere public,
       versioned and reviewable instead of in chat. Nothing internal crossed over:
       no channel names, no client machines, no infrastructure.
+- [x] **Community health files** `[verified]` — `CODE_OF_CONDUCT.md` and
+      `SECURITY.md` added to `codrlabs/.github` (commit `c2abf6d`), which serves
+      them as defaults to every repository in the org. All five org repos are
+      public `[verified]` — `gh repo list codrlabs` — so there is no private-repo
+      gap needing a second repo. Detection confirmed: `gh api
+      repos/codrlabs/{open,vizably}/community/profile` → both point at
+      `.github/CODE_OF_CONDUCT.md` (Contributor Covenant), and
+      `github.com/codrlabs/{open,vizably}/security/policy` renders the policy
+      text for both. The Covenant is 2.1 verbatim with the contact filled in and
+      attribution intact; the source markdown came from
+      `raw.githubusercontent.com/EthicalSource/contributor_covenant` after
+      `contributor-covenant.org/version/2/1/code_of_conduct.md` served a 404 page
+      with a 200 status `[verified]`.
+- [x] **`CONTRIBUTING.md` for this repo** `[verified]` — repo root, plus the site
+      page `start/contributing` rewritten from its Draft placeholder into the
+      real flow. The dev-server slug-cache gotcha from Notes below is now written
+      where a contributor will actually hit it.
 - [x] **Chat section on the working setup page** `[verified]` — Discord added as
       the first section of `practices/working-setup`, with the three habits that
       make it useful (ask in a channel not a DM, say you are stuck early, match
@@ -178,9 +195,13 @@ Status as of 2026-09-10.
        arrangement and how academic-credit placements work, for a company in Canada. Unpaid-work and
        worker-classification rules are jurisdiction-specific and this has had
        no legal review.
-6. [ ] **Add `CONTRIBUTING.md` and `CODE_OF_CONDUCT.md`** to the org.
-       `[verified]` neither exists in any repo. The fine-print page currently
-       admits this gap in a visible callout — remove that callout once closed.
+6. [x] **Add `CONTRIBUTING.md` and `CODE_OF_CONDUCT.md`** to the org — done
+       2026-09-10 `[verified]`, see Done. `SECURITY.md` went in with them. The
+       fine-print callout no longer claims the gap: it now mentions only the
+       licence gap, which is real — `gh api repos/codrlabs/vizably/community/
+       profile` → `license: none`. That one belongs to the vizably effort, not
+       to this repo. Original entry: neither exists in any repo; remove the
+       fine-print callout once closed.
 
 - [x] **Renamed to "Codrlabs Open"** (2026-09-10) `[verified]` — navbar title in
       `astro.config.mjs`; screenshot confirms. `[falsified]` as a claim that the
@@ -344,9 +365,14 @@ images without alt text; `npm audit` reports 0 vulnerabilities.
       protection, while `practices/pull-requests` says one issue → one branch →
       one pull request. Either work that way here or say plainly that the docs
       hub is maintained directly.
-- [ ] **`CONTRIBUTING.md`, `CODE_OF_CONDUCT.md` and `SECURITY.md` are missing** —
-      the site tells other projects to have them. The org's `.github` repo can
-      supply all three to every repo at once.
+- [x] **`CONTRIBUTING.md`, `CODE_OF_CONDUCT.md` and `SECURITY.md` are missing** —
+      closed 2026-09-10 `[verified]`, see Done. Conduct and security are org
+      defaults in `codrlabs/.github`; `CONTRIBUTING.md` is per-repo and this repo
+      now has its own, because setup commands and layout differ per codebase.
+      Original entry: the site tells other projects to have them. The org's
+      `.github` repo can supply all three to every repo at once. `[falsified]` in
+      part — it can supply a default `CONTRIBUTING.md` too, but a shared one
+      would be too generic to run any specific repo from.
 - [ ] **AI disclosure asymmetry** — `ai/contributing` asks contributors to say
       how AI was used in a pull request. This repo's own commits say nothing.
       Arguably out of scope (they are not pull requests), but it is the kind of
