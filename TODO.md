@@ -268,8 +268,16 @@ images without alt text; `npm audit` reports 0 vulnerabilities.
 - [x] **Client names were in this repo** `[verified]` — a Cloudflare
       verification note listed two other properties in the account by name,
       breaking the ground rule against client names. Removed from the current
-      file; **still present in 11 commits of history** pending your call on
-      another history rewrite.
+      file, then from history: the names were scrubbed from every local commit
+      (`git filter-branch`, verified 0 hits across all 27 revisions), you deleted
+      the repository, and it was recreated from the scrubbed history. Checked
+      after: the old commit pages and raw files return 404, the anonymous events
+      feed lists none of the old SHAs, the names appear 0 times at the tip, and
+      locally the old objects no longer exist. The pre-commit gate now includes
+      both names, so this cannot recur silently.
+      Restored on recreation: public visibility, description, homepage, five
+      topics, Pages on `build_type=workflow` with `cname=open.codrlabs.com`;
+      GitHub kept the certificate, so HTTPS never lapsed.
 - [x] **Browser storage was undisclosed** `[verified]` — the site stores
       `starlight-theme` (localStorage) and `sl-sidebar-state` (sessionStorage).
       True that it sets no cookies, but the privacy section now says what is
