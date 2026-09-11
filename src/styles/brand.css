@@ -79,6 +79,29 @@ h4 {
 	color: var(--sl-color-white);
 }
 
+/* Hero actions.
+ *
+ * Starlight spaces them 2rem apart, and rapide leaves the borderless "minimal"
+ * link 4px of side padding plus a transparent 1px border. Next to outlined
+ * pills that read as uneven — measured at 32px between two pill borders but 37px
+ * from a pill border to the link's text — and generous overall. Tighten the gap
+ * and let the minimal link's text sit exactly one gap away. */
+.hero .actions {
+	column-gap: 1.25rem;
+}
+
+.hero .sl-link-button.minimal {
+	padding-inline: 0;
+	border-width: 0;
+}
+
+/* Icons carry built-in whitespace (the right arrow has 5px each side), which left
+ * the primary pill 17px from its left edge to the text but 22px from the icon
+ * to its right edge. Pull trailing icons in so the pills sit balanced. */
+.hero .sl-link-button svg {
+	margin-inline-end: -0.1875rem;
+}
+
 /* Status pills used in the projects tables and project pages. */
 .codr-status {
 	display: inline-block;

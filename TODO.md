@@ -253,6 +253,37 @@ Status as of 2026-09-10.
 
 ## Open
 
+- [x] **Homepage hero buttons look unevenly spaced** (reported 2026-09-10). The
+      gap before "Browse the code" feels larger than the gap between "What this
+      is" and "Mentoring". `[falsified]` in part — the suspicion that the
+      borderless "Browse the code" button carries full side padding: measured at
+      1424px, both box-to-box gaps are 32px (Starlight's `gap: 1rem 2rem`), and
+      rapide gives the minimal button only 4px side padding plus a transparent
+      1px border, so the visible gaps are 32px and 37px — a real but small 5px
+      difference. Measuring inside each button found the rest: the right-arrow
+      icon carries 5px of whitespace each side, so "What this is" sat 17px from
+      its left edge to the text but 22px from the icon to its right edge.
+      **Fixed** `[verified]` in `src/styles/brand.css` by re-measuring the built
+      page at 1424px and 500px: gap tightened to 20px, the minimal link's
+      padding and border removed, trailing icons pulled in 3px. Visible gaps
+      are now 20.0px and 20.0px; "What this is" sits 17px / 19px, "Mentoring"
+      17px / 15.7px.
+- [x] **SEO and link previews** (asked 2026-09-10). Pasting open.codrlabs.com
+      into Discord showed no thumbnail. `[verified]` cause: the live `<head>`
+      already had canonical, sitemap, `og:title`, `og:description`, `og:url`,
+      `og:site_name` and `twitter:card`, but no `og:image`, no `twitter:image`,
+      no `theme-color`, no structured data, and `robots.txt` returned 404.
+      Starlight's `mergeHead` (`dist/utils/head.js`) drops a default tag when a
+      custom one matches it, so adding tags cannot duplicate them.
+      **Added** `[verified]` in the build: `public/og.png` (1200×630, 175 KB,
+      rendered from the brand fonts and logo; fonts confirmed loaded, title on
+      one line inside the margins, stripe colours pixel-exact), `og:image` with
+      type/width/height/alt, `twitter:image` with alt, `theme-color` `#ac0c90`
+      (Discord's embed accent), `apple-touch-icon.png` (180×180), JSON-LD
+      Organization + WebSite, `public/robots.txt` pointing at the sitemap, and
+      `og:type` `website` on the homepage (inner pages stay `article`). Every
+      tag appears exactly once on the homepage. Discord caches embeds per URL,
+      so re-test with a fresh URL such as `https://open.codrlabs.com/?v=2`.
 - [ ] **Organization profile README** (asked 2026-09-10). `[verified]` against
       GitHub's "Customizing your organization's profile" docs: a public org
       README comes from a public repo named `.github`, file `profile/README.md`;
