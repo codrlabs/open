@@ -1,13 +1,15 @@
 ---
 title: Working setup
-description: The tooling and habits that keep a long session survivable — breaks, screen, and connecting to someone else's machine.
+description: Where we talk, the habits that keep a long session survivable, and the rules for other people's machines and credentials.
 sidebar:
   order: 7
 ---
 
-This is the setup we actually run, with the reasoning attached. None of it is
-mandatory. It is written down so nobody has to work it out alone, and so the
-parts that turn out to be folklore are marked as folklore rather than repeated.
+This is the setup we actually run, with the reasoning attached. The comfort parts
+are suggestions — the rules about other people's machines and other people's
+credentials are not. It is written down so nobody has to work it out alone, and
+so the parts that turn out to be folklore are marked as folklore rather than
+repeated.
 
 ## Chat
 
@@ -89,6 +91,21 @@ What does help the eyes is unglamorous: take the breaks, blink deliberately,
 sit about an arm's length (~65 cm) from the screen with it slightly below eye
 level, and match its brightness to the room rather than to the dark.
 
+## Desk
+
+A laptop on its own makes you choose between the screen being too low and your
+hands being too high, and over a full day you pay for it in the neck. A stand and
+an external keyboard separate the two decisions. It is the cheapest upgrade on
+this page.
+
+- Top of the screen at or just below eye level, about an arm's length away.
+- Elbows loosely at your sides at roughly a right angle, wrists straight rather
+  than bent up over the edge of the desk.
+- Feet flat. A box or a stack of books is a footrest.
+
+Then stop optimising. The best posture is the next one, and the break schedule
+above does more for you than the chair does.
+
 ## Remote access
 
 For pairing, debugging on someone else's setup, or reaching a machine you are not
@@ -114,6 +131,39 @@ the rules matter more than the tool:
 5. **What you see on someone's machine stays there.** It is not yours to repeat,
    screenshot or paste.
 
+## Secrets and accounts
+
+The rest of this page is about lasting the day. This part is about not handing
+someone your keys.
+
+**Never paste a credential into chat.** Not a token, not a `.env` file, not a
+database URL, not "just for a minute". Deleting the message afterwards does not
+un-leak it — it may already sit in someone's notification, a cached client, a
+screenshot or a bot log. Share credentials through a password manager
+([Bitwarden](https://bitwarden.com/) is open source and free for personal use) or
+a one-time secret link, with the one person who needs it.
+
+**Keep them out of the repository in the first place.** Real values in `.env`,
+`.env` in `.gitignore`, and a committed `.env.example` listing the keys with
+dummy values so the next person knows what to fill in.
+
+:::caution[If a secret does reach a public repository, rotate first]
+It is compromised the moment it is pushed. Public event feeds and mirrors see new
+commits within seconds, and GitHub itself scans public code for known token
+formats.
+
+Rewriting history does not undo that: the old commits stay reachable by their
+SHA, and anyone who already cloned or forked still has them. So the order is
+**rotate the credential, then clean the history** — never the other way round. A
+dead secret in an old commit is a curiosity. A live one is an open door.
+:::
+
+**Two-factor authentication on GitHub is not optional** — it has been required
+for accounts that contribute code since March 2023. An authenticator app or a
+passkey beats SMS. Download the recovery codes and keep them somewhere that is
+not the device generating the codes: GitHub Support cannot restore an account
+without them.
+
 ## Sources
 
 - American Academy of Ophthalmology — [Computers, Digital Devices, and Eye
@@ -128,6 +178,10 @@ the rules matter more than the tool:
   smartphone use on sleep outcomes in emerging
   adults?](https://doi.org/10.1016/j.sleh.2021.03.005), *Sleep Health* 7(4),
   2021
+- GitHub Docs — [About two-factor
+  authentication](https://docs.github.com/en/authentication/securing-your-account-with-two-factor-authentication-2fa/about-two-factor-authentication)
+- GitHub Docs — [About secret
+  scanning](https://docs.github.com/en/code-security/secret-scanning/introduction/about-secret-scanning)
 
 Something here out of date or missing? Use the edit link at the foot of the page
 and open a pull request.

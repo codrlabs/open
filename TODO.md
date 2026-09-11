@@ -103,6 +103,19 @@ projects. Built with Astro + Starlight. First project documented: **Vizably**.
       in the remote-access rules something to point at. Same invite as the header
       icon in `astro.config.mjs`. No channel names in the page: the private side
       of the server must not be described here, and channel names change.
+- [x] **Secrets, accounts and desk sections** `[verified]` — two additions to
+      `practices/working-setup` beyond the migrated note. *Secrets and accounts*:
+      never paste a credential into chat, keep it out of the repo (`.env` +
+      `.gitignore` + a committed `.env.example`), and on exposure **rotate the
+      credential first, clean the history second** — the old commits stay
+      reachable by SHA and forks keep them, so history rewriting alone is not a
+      fix. That last point is ours, learned the hard way on this repo; the page
+      states the mechanism without describing what was scrubbed. Plus GitHub 2FA,
+      required for accounts that contribute code since March 2023 `[verified]` —
+      quoted from docs.github.com, now in the page's Sources. *Desk*: laptop
+      stand plus external keyboard, screen height, elbows, feet — uncited, since
+      `osha.gov` returns 403 to automated fetches and a source I cannot open is a
+      source I will not cite.
 - [x] **"Blue light causes the eye strain"** `[falsified]` — the source note
       framed night-light mode as an eye-strain fix and cited an SEO listicle.
       Checked: Cochrane 2023 (17 randomised trials) found blue-light filtering
