@@ -79,6 +79,26 @@ h4 {
 	color: var(--sl-color-white);
 }
 
+/* Header lockup: logomark + logotype, read as one unit.
+ *
+ * Starlight sizes the mark to the full nav height (40px) and separates it with
+ * --sl-nav-gap (24px). Beside 20px type whose capitals are only 14px tall, the
+ * mark towers over the wordmark and the gap reads as two unrelated elements.
+ * Size the mark to about twice the cap height, set the gap from the mark rather
+ * than the nav, and give the wordmark logotype weight. */
+.site-title {
+	/* 8px, which measures ~12px optically: the mark's artwork carries about 4px
+	 * of transparent padding inside its box. That lands just under the wordmark's
+	 * 14px cap height, the usual ratio for a lockup. */
+	gap: 0.5rem;
+	font-weight: 700;
+	letter-spacing: -0.015em;
+}
+
+.site-title img {
+	height: 28px;
+}
+
 /* Hero actions.
  *
  * Starlight spaces them 2rem apart, and rapide leaves the borderless "minimal"

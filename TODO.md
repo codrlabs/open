@@ -253,6 +253,18 @@ Status as of 2026-09-10.
 
 ## Open
 
+- [x] **Header should read as a logo lockup** (asked 2026-09-10) — logomark plus
+      logotype, not an image sitting next to text. `[verified]` cause: Starlight
+      sizes the mark to the full nav height and spaces it with `--sl-nav-gap`, so
+      measured on a built page the mark is 40×40 and the gap 24px, against a
+      wordmark of 20px/600 type whose capitals are 14px tall — the mark is nearly
+      3× the cap height. **Fixed** `[verified]` in `src/styles/brand.css` and
+      re-measured on the built page, in the DOM and in pixels: mark 28×28
+      (exactly 2.00× cap height), CSS gap 8px which measures 12px optically
+      because the mark's artwork carries ~4px of transparent padding, wordmark
+      20px/700 with -0.015em tracking, and the mark's ink centre sits 0.5px from
+      the wordmark's — effectively perfect without a nudge. Holds at 500px, where
+      the nav is 3.5rem: the 28px mark still fits and the wordmark stays visible.
 - [x] **Homepage hero buttons look unevenly spaced** (reported 2026-09-10). The
       gap before "Browse the code" feels larger than the gap between "What this
       is" and "Mentoring". `[falsified]` in part — the suspicion that the
