@@ -9,6 +9,23 @@ This is the setup we actually run, with the reasoning attached. None of it is
 mandatory. It is written down so nobody has to work it out alone, and so the
 parts that turn out to be folklore are marked as folklore rather than repeated.
 
+## Chat
+
+Everything else here is easier with people around, and
+[Discord](https://discord.com/invite/4KajkBHaQ) is where they are: questions,
+work in progress, what changed this week, and a voice room for pairing. Same
+invite as the Discord icon in the header, and it is the "chat" that the
+remote-access rules further down refer to.
+
+Three habits make it work:
+
+- **Ask in a channel, not a DM.** The next person to hit the same thing can find
+  the answer. In a DM it is gone.
+- **Say you are stuck early.** Twenty silent minutes is worse for everyone than
+  one question, and nobody is keeping score of who asked.
+- **Use the same display name as your GitHub handle,** so a review comment and a
+  chat message obviously come from the same person.
+
 ## Breaks
 
 Long uninterrupted sessions are where posture, eyes and attention degrade

@@ -96,6 +96,13 @@ projects. Built with Astro + Starlight. First project documented: **Vizably**.
       screen light, remote access — so the guidance sits somewhere public,
       versioned and reviewable instead of in chat. Nothing internal crossed over:
       no channel names, no client machines, no infrastructure.
+- [x] **Chat section on the working setup page** `[verified]` — Discord added as
+      the first section of `practices/working-setup`, with the three habits that
+      make it useful (ask in a channel not a DM, say you are stuck early, match
+      your display name to your GitHub handle). It also gives the "ask in chat"
+      in the remote-access rules something to point at. Same invite as the header
+      icon in `astro.config.mjs`. No channel names in the page: the private side
+      of the server must not be described here, and channel names change.
 - [x] **"Blue light causes the eye strain"** `[falsified]` — the source note
       framed night-light mode as an eye-strain fix and cited an SEO listicle.
       Checked: Cochrane 2023 (17 randomised trials) found blue-light filtering

@@ -23,7 +23,7 @@ something broke without it.
 | [Reviewing](/practices/reviewing/) | "How do I review someone else's pull request?" |
 | [Git recovery](/practices/git-recovery/) | "I've made a mess of this branch. How do I fix it?" |
 | [Documentation](/practices/documentation/) | "Where does this document go, and does it belong in a repo at all?" |
-| [Working setup](/practices/working-setup/) | "How do I get through a long session, and what are the rules for connecting to someone else's machine?" |
+| [Working setup](/practices/working-setup/) | "Where do we talk, how do I get through a long session, and what are the rules for connecting to someone else's machine?" |
 
 ## The through-line
 
