@@ -2,7 +2,7 @@
 title: Account storage
 description: Vizably keeps no database — a user's account lives in a GitHub repo or Drive folder they already own.
 sidebar:
-  order: 3
+  order: 4
 ---
 
 Vizably runs **no database of its own**. A signed-in user's entire account —
@@ -106,13 +106,39 @@ expected rather than exceptional.
 store can load the account. The storage ACL *is* the account ACL. That is a
 deliberate trade and it needs saying out loud in the UI, not just in docs.
 
-Two other things must be disclosed in the interface rather than buried:
+One other thing must be disclosed in the interface rather than buried:
+deleting a scan removes the file and refreshes the caches, but **GitHub
+history may still contain the deleted blob** unless history is rewritten. Do
+not claim permanence you cannot deliver.
 
-- GitHub's OAuth `repo` scope is all-or-nothing — it cannot be narrowed to a
-  single repository.
-- Deleting a scan removes the file and refreshes the caches, but **GitHub
-  history may still contain the deleted blob** unless history is rewritten. Do
-  not claim permanence you cannot deliver.
+## GitHub access is a GitHub App, not a plain OAuth scope
+
+GitHub storage is authorized through a **GitHub App** (`GITHUB_APP_ID` +
+`GITHUB_APP_PRIVATE_KEY`, installed per-account) rather than a classic OAuth
+App with a `repo` scope. That is a deliberate choice: a classic `repo` scope
+is all-or-nothing across every repository the user owns, while a GitHub App
+installation can be scoped to the one repository Vizably actually needs —
+narrower access, disclosed as such. The backend resolves the installation for
+a given `owner/repo` via the Apps API before writing
+(`backend/services/authService.js`).
+
+## Endpoints and current gaps
+
+The auth/storage API lives under `/api/auth/*`. `backend/README.md` in the
+repository keeps the endpoint table current — read that rather than this page
+for the exact routes, since this is the part of Vizably still changing
+fastest. Two things worth knowing going in:
+
+- **Google is not implemented yet.** `/api/auth/google` and its callback
+  return `501` today, and
+  [issue #111](https://github.com/codrlabs/vizably/issues/111) tracks
+  dropping Google sign-in from the near-term plan rather than finishing it —
+  treat the Drive side of this page as the target design, not current
+  behavior.
+- **GitHub repository creation exists** (`POST /api/auth/storage/create`,
+  plus a name-availability check) in addition to the browse/validate/load
+  flow described above — the connect UI can create a new private repository
+  for a user who doesn't have one yet, not just pick from existing ones.
 
 ## Implementer checklist
 
