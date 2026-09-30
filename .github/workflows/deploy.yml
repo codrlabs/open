@@ -36,7 +36,7 @@ jobs:
           # a shallow clone would stamp every page with the latest commit.
           fetch-depth: 0
       - name: Install, build, and upload site
-        uses: withastro/action@e84f40bd8d2caa9e768ec82ad30dd81f0b280853 # v6.1.2
+        uses: withastro/action@3eafd002e65cc31b4f0eae0bb05450d521562247 # v6.1.3
         with:
           # Pinned so CI cannot drift onto a runtime the site has not been built
           # against. Astro 7 requires Node >= 22.12.
