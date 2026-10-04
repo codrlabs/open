@@ -39,8 +39,8 @@ Two halves and one wire contract:
 ## Accounts without a database
 
 Vizably runs no database of its own. A signed-in user's whole account — profile,
-settings, saved scans — lives in storage they already own: one GitHub repository
-or one Google Drive folder. OAuth is used only to identify the user and get an
+settings, saved scans — lives in storage they already own: one GitHub repository.
+OAuth is used only to identify the user and get an
 API token; the user-owned store is the source of truth.
 
 That is what makes the product cheap enough to offer to everyone: no per-user
@@ -48,14 +48,12 @@ hosting, no lock-in, and an account that is portable across devices.
 
 ## Read next
 
+- [Getting started](/vizably/getting-started/) — clone it, run it, test it.
 - [Architecture](/vizably/architecture/) — the layers, the folders, and the
   contract between the two halves.
 - [Account storage](/vizably/account-storage/) — the portable account: on-disk
   layout, the fit-check, and the concurrency rules.
-
-:::note[Still to write]
-The scan pipeline — Puppeteer, axe-core, and the transformer that turns rule
-violations into readable findings — does not have a page here yet. Until it
-does, the detail lives in the
-[Vizably repository](https://github.com/codrlabs/vizably).
-:::
+- [URL normalization](/vizably/url-normalization/) — accepting a bare domain
+  on the landing page without weakening the backend's validation.
+- [Scanning](/vizably/scanning/) — Puppeteer, axe-core, and the transform
+  that turns rule violations into readable findings.

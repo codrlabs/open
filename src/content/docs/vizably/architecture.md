@@ -2,7 +2,7 @@
 title: Architecture
 description: How Vizably is put together — the layers, the folders, and the contract between the two halves.
 sidebar:
-  order: 2
+  order: 3
 ---
 
 Vizably is two halves and one wire contract. The backend knows nothing about
