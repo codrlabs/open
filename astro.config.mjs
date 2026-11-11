@@ -6,6 +6,11 @@ import starlightThemeRapide from 'starlight-theme-rapide';
 // https://astro.build/config
 export default defineConfig({
 	site: 'https://open.codrlabs.com',
+	// Section roots redirect to their overview page, so the natural link
+	// (/vizably/) works instead of 404ing. Add one line per new section.
+	redirects: {
+		'/vizably': '/vizably/overview',
+	},
 	integrations: [
 		starlight({
 			title: 'Codrlabs Open',
