@@ -121,7 +121,7 @@ curl "http://localhost:3000/api/scan-results?url=http://127.0.0.1"
 
 ```bash
 cd backend  && npm test               # node:test + supertest
-cd frontend && npm test:run           # Vitest, single run
+cd frontend && npm run test:run       # Vitest, single run
 cd frontend && npm run lint
 cd frontend && npm run build
 ```

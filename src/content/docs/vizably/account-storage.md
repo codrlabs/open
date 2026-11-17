@@ -117,15 +117,9 @@ deleting a scan removes the file and refreshes the caches, but **GitHub
 history may still contain the deleted blob** unless history is rewritten. Do
 not claim permanence you cannot deliver.
 
-Deletion comes in two sizes:
-
-- **One scan** — `DELETE /api/scans/:id` removes the immutable
-  `scans/<scanId>_<host>.json` and refreshes `scans/index.json` and the
-  manifest `summary`.
-- **Every scan** — `DELETE /api/scans` removes all scan files under `scans/`
-  (keeping `index.json`), then writes an empty index and
-  `summary.scanCount: 0`. The manifest identity and the repository itself
-  remain.
+Deleting a scan — `DELETE /api/scans/:id` — removes the immutable
+`scans/<scanId>_<host>.json` and refreshes `scans/index.json` and the manifest
+`summary`.
 
 ## GitHub access is a GitHub App, not a plain OAuth scope
 
